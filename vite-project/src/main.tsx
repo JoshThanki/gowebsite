@@ -1,16 +1,22 @@
-import { StrictMode } from "react";
-import { createRoot } from "react-dom/client";
-import { ChakraProvider } from "@chakra-ui/react";
-import { BrowserRouter as Router } from "react-router-dom";
-import App from "./App";
-import "./index.css";
+import React from "react";
+import ReactDOM from "react-dom/client";
+import { ChakraProvider, ColorModeScript } from "@chakra-ui/react";
+import theme from "./theme";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
+import { RouterProvider } from "react-router-dom";
+import router from "./routes";
 
-createRoot(document.getElementById("root")!).render(
-  <StrictMode>
-    <ChakraProvider>
-      <Router>
-        <App />
-      </Router>
+const queryClient = new QueryClient();
+
+ReactDOM.createRoot(document.getElementById("root")!).render(
+  <React.StrictMode>
+    <ChakraProvider theme={theme}>
+      <ColorModeScript initialColorMode={theme.config.initalColorMode} />
+      <QueryClientProvider client={queryClient}>
+        <RouterProvider router={router} />
+        <ReactQueryDevtools />
+      </QueryClientProvider>
     </ChakraProvider>
-  </StrictMode>
+  </React.StrictMode>
 );

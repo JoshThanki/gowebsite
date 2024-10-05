@@ -25,13 +25,13 @@ const NavBar = () => {
     <Flex
       direction="row" // Change to row for horizontal layout
       align="center"
-      bg="#1E90FF" // Blue background
+      bg={"#1E201E"}
       color="white"
       p={4}
       w="100vw" // Full width
-      h="10vh" // Adjust height for a thinner navbar
+      h="5vh" // Adjust height for a thinner navbar
       justifyContent="space-between"
-      rounded={5}
+   //   rounded={5}
     >
       <Box>
         <Link to="/" onClick={() => handleLinkClick("home")}>
@@ -42,13 +42,26 @@ const NavBar = () => {
       <HStack spacing="30px">
         {" "}
         {/* Adjusted spacing for horizontal layout */}
+        <Link to="/" onClick={() => handleLinkClick("home")}>
+          <HStack>
+            <Text
+              fontWeight="bold"
+              fontSize="20px"
+              fontFamily="Inter, sans-serif"
+              color={activeLink === "home" ? "#808080" : "#E2F1E7"} // Apply color based on active link
+            >
+              Home
+            </Text>
+          </HStack>
+        </Link>
+
         <Link to="/history" onClick={() => handleLinkClick("history")}>
           <HStack>
             <Text
               fontWeight="bold"
               fontSize="20px"
-              fontFamily="DM Sans"
-              color={activeLink === "history" ? "black" : "white"} // Apply color based on active link
+              fontFamily="Inter, sans-serif"
+              color={activeLink === "history" ? "#808080" : "#E2F1E7"} // Apply color based on active link
             >
               History
             </Text>
@@ -59,8 +72,8 @@ const NavBar = () => {
             <Text
               fontWeight="bold"
               fontSize="20px"
-              fontFamily="DM Sans"
-              color={activeLink === "rules" ? "black" : "white"} // Apply color based on active link
+              fontFamily="Inter, sans-serif"
+              color={activeLink === "rules" ? "#808080" : "#E2F1E7"} // Apply color based on active link
             >
               Rules
             </Text>
@@ -71,8 +84,8 @@ const NavBar = () => {
             <Text
               fontWeight="bold"
               fontSize="20px"
-              fontFamily="DM Sans"
-              color={activeLink === "Play Go" ? "black" : "white"} // Apply color based on active link
+              fontFamily="Inter, sans-serif"
+              color={activeLink === "Play Go" ? "#808080" : "#E2F1E7"} // Apply color based on active link
             >
               Play Go
             </Text>
@@ -83,8 +96,8 @@ const NavBar = () => {
             <Text
               fontWeight="bold"
               fontSize="20px"
-              fontFamily="DM Sans"
-              color={activeLink === "timetable" ? "black" : "white"} // Apply color based on active link
+              fontFamily="Inter, sans-serif"
+              color={activeLink === "timetable" ? "#808080" : "#E2F1E7"} // Apply color based on active link
             >
               Timetable
             </Text>

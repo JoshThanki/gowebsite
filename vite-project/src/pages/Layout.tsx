@@ -1,6 +1,7 @@
 import { Box, Flex } from "@chakra-ui/react";
 import { Link, Outlet, useNavigate } from "react-router-dom";
 import NavBar from "../components/NavBar";
+import backgroundImage from '../assets/go_background.jpg';
 // import { useEffect } from "react";
 // import useAuthUser from "../stores/useAuthUser";
 
@@ -20,22 +21,20 @@ const Layout = () => {
   //   }, []);
 
   return (
-    <Flex h="100vh">
+    <Flex h="100vh" flexDir="column">
       {" "}
       {/* Remove w="100vh" from here */}
       <NavBar />
-      <Flex flex="1" bg="white" direction="column" padding={5} overflowY="auto">
+      <Box flex="1" 
+           backgroundImage={backgroundImage}
+           backgroundSize="cover" // Ensure the image covers the whole box
+           backgroundPosition="center" // Center the image
+           backgroundRepeat="no-repeat" // Prevent the image from repeating
+           >
         {" "}
-        {/* Add flex="1" to make content area take remaining space, and add overflowY="auto" to enable vertical scrolling */}
-        <Flex direction="row" justifyContent="space-between" marginBottom={3}>
-          <Link to={"/"}></Link>
-        </Flex>
-        <Box flex="1">
-          {" "}
-          {/* Add flex="1" to make the content area take remaining space */}
-          <Outlet />
-        </Box>
-      </Flex>
+        {/* Add flex="1" to make the content area take remaining space */}
+        <Outlet />
+      </Box>
     </Flex>
   );
 };

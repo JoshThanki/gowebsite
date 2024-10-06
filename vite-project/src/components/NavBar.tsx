@@ -1,11 +1,13 @@
 import { SetStateAction, useEffect, useState } from "react";
-import { Text, VStack, HStack, Image, Box, Flex } from "@chakra-ui/react";
-import { Link, useLocation } from "react-router-dom";
+import { Text, VStack, HStack, Image, Box, Flex, Button } from "@chakra-ui/react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import logo from "../assets/react.svg";
 
 const NavBar = () => {
+
   const [activeLink, setActiveLink] = useState(""); // State to manage active link
   const location = useLocation();
+  const navigate = useNavigate();
 
   // Function to handle click on a link and set active link
   const handleLinkClick = (link: SetStateAction<string>) => {
@@ -22,11 +24,11 @@ const NavBar = () => {
   }, [location.pathname]); // Added location.pathname as a dependency for useEffect
 
   return (
+    <Flex>
     <Flex
       direction="row" // Change to row for horizontal layout
       align="center"
-      bg={"#1E201E"}
-      color="white"
+      bg="theme.colors.darkBrown"
       p={4}
       w="100vw" // Full width
       h="5vh" // Adjust height for a thinner navbar
@@ -48,7 +50,7 @@ const NavBar = () => {
               fontWeight="bold"
               fontSize="20px"
               fontFamily="Inter, sans-serif"
-              color={activeLink === "home" ? "#808080" : "#E2F1E7"} // Apply color based on active link
+              color={activeLink === "home" ? "secondary.100" : "secondary.50"} // Apply color based on active link
             >
               Home
             </Text>
@@ -61,7 +63,7 @@ const NavBar = () => {
               fontWeight="bold"
               fontSize="20px"
               fontFamily="Inter, sans-serif"
-              color={activeLink === "history" ? "#808080" : "#E2F1E7"} // Apply color based on active link
+              color={activeLink === "history" ? "secondary.100" : "secondary.50"} // Apply color based on active link
             >
               History
             </Text>
@@ -73,19 +75,19 @@ const NavBar = () => {
               fontWeight="bold"
               fontSize="20px"
               fontFamily="Inter, sans-serif"
-              color={activeLink === "rules" ? "#808080" : "#E2F1E7"} // Apply color based on active link
+              color={activeLink === "rules" ? "secondary.100" : "secondary.50"} // Apply color based on active link
             >
               Rules
             </Text>
           </HStack>
         </Link>
-        <Link to="/Play Go" onClick={() => handleLinkClick("Play Go")}>
+        <Link to="/playgo" onClick={() => handleLinkClick("playgo")}>
           <HStack>
             <Text
               fontWeight="bold"
               fontSize="20px"
               fontFamily="Inter, sans-serif"
-              color={activeLink === "Play Go" ? "#808080" : "#E2F1E7"} // Apply color based on active link
+              color={activeLink === "playgo" ? "secondary.100" : "secondary.50"} // Apply color based on active link
             >
               Play Go
             </Text>
@@ -97,14 +99,20 @@ const NavBar = () => {
               fontWeight="bold"
               fontSize="20px"
               fontFamily="Inter, sans-serif"
-              color={activeLink === "timetable" ? "#808080" : "#E2F1E7"} // Apply color based on active link
+              color={activeLink === "timetable" ? "secondary.100" : "secondary.50"} // Apply color based on active link
             >
               Timetable
             </Text>
           </HStack>
         </Link>
       </HStack>
-      <HStack />
+
+      <HStack>
+        <Button onClick={() => navigate("/login")}>Log in
+
+        </Button>
+      </HStack>
+    </Flex>
     </Flex>
   );
 };

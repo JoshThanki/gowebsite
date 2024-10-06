@@ -2,6 +2,7 @@ import { Box, Flex } from "@chakra-ui/react";
 import { Link, Outlet, useNavigate } from "react-router-dom";
 import NavBar from "../components/NavBar";
 import backgroundImage from '../assets/go_background.jpg';
+import LoginPopup from "../components/LoginPopup";
 // import { useEffect } from "react";
 // import useAuthUser from "../stores/useAuthUser";
 

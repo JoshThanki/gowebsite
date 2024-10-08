@@ -1,5 +1,5 @@
 const PlayGo = () => {
-  return <div>PlayGo</div>;
+  return <div>play go</div>;
 };
 
 export default PlayGo;

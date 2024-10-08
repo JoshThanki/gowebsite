@@ -2,7 +2,7 @@ import { Container, Heading } from "@chakra-ui/react";
 
 function HomePage() {
   return (
-    <Container bg={"#2C2F32"} textColor={"#D1D5DB"} minW={"70vw"} shadow={"1g"}>
+    <Container minW="70vw"  boxShadow="lg" bg="rgba(0,0,0,0.8)" textColor="gray.300" shadow={"1g"} borderWidth={1} borderColor="gray.00">
       <Heading>Welcome to the HomePage</Heading>
       <p>This is some random HTML code!</p>
 

@@ -1,15 +1,18 @@
 import { SetStateAction, useEffect, useState } from "react";
-import { Text, VStack, HStack, Image, Box, Flex, Button } from "@chakra-ui/react";
+import { Text, HStack, Image, Box, Flex, Button } from "@chakra-ui/react";
+import { onAuthStateChanged, signOut } from "firebase/auth";
 import { Link, useLocation, useNavigate } from "react-router-dom";
+import { auth } from "../services/firebaseConfig";
 import logo from "../assets/react.svg";
 
 const NavBar = () => {
 
-  const [activeLink, setActiveLink] = useState(""); // State to manage active link
+  const [activeLink, setActiveLink] = useState("");
   const location = useLocation();
+  const [user, setUser] = useState<any>(null);
   const navigate = useNavigate();
 
-  // Function to handle click on a link and set active link
+
   const handleLinkClick = (link: SetStateAction<string>) => {
     setActiveLink(link);
   };
@@ -21,19 +24,36 @@ const NavBar = () => {
     } else {
       handleLinkClick(location.pathname.substring(1));
     }
-  }, [location.pathname]); // Added location.pathname as a dependency for useEffect
+  }, [location.pathname]); 
+
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+      setUser(currentUser); 
+    });
+
+    return () => unsubscribe();
+  }, []);
+
+  const handleLogout = async () => {
+    try {
+      await signOut(auth);
+      setUser(null);
+      navigate("login");
+    } catch(err: any){
+      console.log("error logging out", err);
+    }
+  }
 
   return (
     <Flex>
     <Flex
-      direction="row" // Change to row for horizontal layout
+      direction="row" 
       align="center"
-      bg="theme.colors.darkBrown"
+      bg="gray.900"
       p={4}
-      w="100vw" // Full width
-      h="5vh" // Adjust height for a thinner navbar
+      w="100vw" 
+      h="5vh" 
       justifyContent="space-between"
-   //   rounded={5}
     >
       <Box>
         <Link to="/" onClick={() => handleLinkClick("home")}>
@@ -43,14 +63,13 @@ const NavBar = () => {
 
       <HStack spacing="30px">
         {" "}
-        {/* Adjusted spacing for horizontal layout */}
         <Link to="/" onClick={() => handleLinkClick("home")}>
           <HStack>
             <Text
               fontWeight="bold"
               fontSize="20px"
               fontFamily="Inter, sans-serif"
-              color={activeLink === "home" ? "secondary.100" : "secondary.50"} // Apply color based on active link
+              color={activeLink === "home" ? "gray.500" : "gray.300"} 
             >
               Home
             </Text>
@@ -63,7 +82,7 @@ const NavBar = () => {
               fontWeight="bold"
               fontSize="20px"
               fontFamily="Inter, sans-serif"
-              color={activeLink === "history" ? "secondary.100" : "secondary.50"} // Apply color based on active link
+              color={activeLink === "history" ? "gray.500" : "gray.300"} 
             >
               History
             </Text>
@@ -75,7 +94,7 @@ const NavBar = () => {
               fontWeight="bold"
               fontSize="20px"
               fontFamily="Inter, sans-serif"
-              color={activeLink === "rules" ? "secondary.100" : "secondary.50"} // Apply color based on active link
+              color={activeLink === "rules" ? "gray.500" : "gray.300"} 
             >
               Rules
             </Text>
@@ -87,7 +106,7 @@ const NavBar = () => {
               fontWeight="bold"
               fontSize="20px"
               fontFamily="Inter, sans-serif"
-              color={activeLink === "playgo" ? "secondary.100" : "secondary.50"} // Apply color based on active link
+              color={activeLink === "playgo" ? "gray.500" : "gray.300"} 
             >
               Play Go
             </Text>
@@ -99,7 +118,7 @@ const NavBar = () => {
               fontWeight="bold"
               fontSize="20px"
               fontFamily="Inter, sans-serif"
-              color={activeLink === "timetable" ? "secondary.100" : "secondary.50"} // Apply color based on active link
+              color={activeLink === "timetable" ? "gray.500" : "gray.300"} 
             >
               Timetable
             </Text>
@@ -108,10 +127,19 @@ const NavBar = () => {
       </HStack>
 
       <HStack>
-        <Button onClick={() => navigate("/login")}>Log in
-
+      {user ? (
+        <>
+          <Button onClick={handleLogout} colorScheme="red">
+            Logout
+          </Button>
+          {/* <Text color="white">Logged in</Text> */}
+        </>
+      ) : (
+        <Button onClick={() => navigate("/login")} colorScheme="blue">
+          Log in
         </Button>
-      </HStack>
+      )}
+    </HStack>
     </Flex>
     </Flex>
   );

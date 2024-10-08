@@ -8,6 +8,7 @@ import PlayGo from "./pages/PlayGo";
 import RulesPage from "./pages/RulesPage";
 import Timetable from "./pages/Timetable";
 import LoginPage from "./pages/LoginPage";
+import SuccessfulSignUp from "./pages/SuccesfulSignUp";
 
 const router = createBrowserRouter([
   {
@@ -22,6 +23,7 @@ const router = createBrowserRouter([
       { path: "timetable", element: <Timetable /> },
       { path: "register", element: <RegisterPage /> },
       { path: "login", element: <LoginPage /> },
+      { path: "signup-complete", element: <SuccessfulSignUp />}
     ],
   },
 

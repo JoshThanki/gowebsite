@@ -13,16 +13,35 @@ import {
   VStack,
   HStack
 } from '@chakra-ui/react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 const LoginPage: React.FC = () => {
-  const [email, setEmail] = useState<string>('');
+  const [username, setUsername] = useState<string>('');
   const [password, setPassword] = useState<string>('');
   const [error, setError] = useState<string | null>(null);
 
-  const handleEmailChange = (e: ChangeEvent<HTMLInputElement>) => {
-    setEmail(e.target.value);
+  const navigate = useNavigate();
+
+  const handleUsernameChange = (e: ChangeEvent<HTMLInputElement>) => {
+    setUsername(e.target.value);
+
+    if (validateUsername()){
+      setError(null);
+    }
   };
+
+  const validateUsername = () => {
+    const userNamePattern = /^[up]\d{7}$/;
+    return userNamePattern.test(username);
+  }
+
+  const handleBlur = () => {
+    if (!validateUsername()){
+      setError("Use student id")
+    } else {
+      setError(null);
+    }
+  }
 
   const handlePasswordChange = (e: ChangeEvent<HTMLInputElement>) => {
     setPassword(e.target.value);
@@ -31,29 +50,30 @@ const LoginPage: React.FC = () => {
   const handleLogin = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     try {
-      const userCredential = await signInWithEmailAndPassword(auth, email, password);
-      console.log('User logged in:', userCredential.user);
-      setError(null); // Clear any errors if login succeeds
-    } catch (err: any) {
-      setError(err.message); // Set error message on failure
+      await signInWithEmailAndPassword(auth, username + '@live.warwick.ac.uk', password);
+      console.log("User logged in");
+      setError(null);
+      navigate('/');
+    } catch (err: any){
+      setError(err.message);
     }
   };
 
   return (
     <Box width="100vw" height="100vh" display="flex" justifyContent="center" alignItems="center" >
-      <Box width="400px" p={8} borderWidth={1} borderRadius="lg" boxShadow="lg" bg="primary.50">
+      <Box width="400px" p={8} borderWidth={1} borderRadius="lg" boxShadow="lg" bg="rgba(0,0,0,0.7)" textColor="gray.300">
         <Heading textAlign="center" mb={6}>Login</Heading>
 
         <form onSubmit={handleLogin}>
           <VStack spacing={4}>
-            {/* Email Input */}
             <FormControl isInvalid={!!error}>
-              <FormLabel>Email</FormLabel>
+              <FormLabel>Username</FormLabel>
               <Input
-                type="email"
-                value={email}
-                onChange={handleEmailChange}
-                placeholder="Enter your email"
+                type="text"
+                value={username}
+                onChange={handleUsernameChange}
+                placeholder="Enter your username"
+                onBlur={handleBlur}
                 required
               />
             </FormControl>
@@ -79,7 +99,7 @@ const LoginPage: React.FC = () => {
         </form>
         <HStack justifyContent={"center"} spacing={2}>
           <Text>Not registered?</Text>
-          <Link to={"/register"} style={{textDecoration: 'underline'}}>Sign in</Link>
+          <Link to={"/register"} style={{ textDecoration: 'underline' }}>Sign up</Link>
         </HStack>
       </Box>
     </Box>

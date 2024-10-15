@@ -2,13 +2,13 @@ import { createBrowserRouter } from "react-router-dom";
 import Layout from "./pages/Layout";
 import ErrorPage from "./pages/ErrorPage";
 import HomePage from "./pages/HomePage";
-import HistoryPage from "./pages/HistoryPage";
 import RegisterPage from "./pages/RegisterPage";
 import PlayGo from "./pages/PlayGo";
-import RulesPage from "./pages/RulesPage";
 import Timetable from "./pages/Timetable";
+import ContactsPage from "./pages/ContactsPage";
 import LoginPage from "./pages/LoginPage";
 import SuccessfulSignUp from "./pages/SuccesfulSignUp";
+import ImagesPage from "./pages/ImagesPage";
 
 const router = createBrowserRouter([
   {
@@ -17,17 +17,15 @@ const router = createBrowserRouter([
     errorElement: <ErrorPage />,
     children: [
       { path: "", element: <HomePage /> },
-      { path: "history", element: <HistoryPage /> },
-      { path: "playgo", element: <PlayGo/> },
-      { path: "rules", element: <RulesPage /> },
+      { path: "playgo", element: <PlayGo /> },
+      { path: "contacts", element: <ContactsPage /> },
       { path: "timetable", element: <Timetable /> },
       { path: "register", element: <RegisterPage /> },
       { path: "login", element: <LoginPage /> },
-      { path: "signup-complete", element: <SuccessfulSignUp />}
+      { path: "signup-complete", element: <SuccessfulSignUp /> },
+      { path: "images", element: <ImagesPage />}
     ],
   },
-
-
 ]);
 
 export default router;

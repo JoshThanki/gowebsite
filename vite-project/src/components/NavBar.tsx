@@ -54,7 +54,11 @@ const NavBar = () => {
         justifyContent="space-between"
       >
         <Box height="250%" p={0}>
-          <Link to="/" onClick={() => handleLinkClick("home")} style={{ padding: 0, margin: 0 }}>
+          <Link
+            to="/"
+            onClick={() => handleLinkClick("home")}
+            style={{ padding: 0, margin: 0 }}
+          >
             <Image
               src={logo}
               objectFit="contain"
@@ -81,7 +85,7 @@ const NavBar = () => {
               </Text>
             </HStack>
           </Link>
-          <Link to="/playgo" onClick={() => handleLinkClick("playgo")}>
+          {/* <Link to="/playgo" onClick={() => handleLinkClick("playgo")}>
             <HStack>
               <Text
                 fontWeight="bold"
@@ -92,7 +96,7 @@ const NavBar = () => {
                 Play Go
               </Text>
             </HStack>
-          </Link>
+          </Link> */}
           <Link to="/images" onClick={() => handleLinkClick("images")}>
             <HStack>
               <Text
@@ -113,7 +117,7 @@ const NavBar = () => {
                 fontFamily="Inter, sans-serif"
                 color={activeLink === "timetable" ? "gray.500" : "gray.300"}
               >
-                Timetable
+                Events
               </Text>
             </HStack>
           </Link>

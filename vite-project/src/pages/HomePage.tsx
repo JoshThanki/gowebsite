@@ -8,7 +8,7 @@ import {
   List,
   ListItem,
   Text,
-  Image
+  Image,
 } from "@chakra-ui/react";
 import { FaInstagram, FaDiscord } from "react-icons/fa";
 import logo from "../assets/su-logo.svg";
@@ -20,6 +20,7 @@ const HomePage = () => {
       boxShadow="lg"
       bg="rgba(0,0,0,0.8)"
       textColor="gray.300"
+      mt={4}
       p={8}
     >
       <Heading as="h1" size="xl" mb={6} textAlign="center" color="teal.300">
@@ -62,8 +63,11 @@ const HomePage = () => {
           <Link href="https://discord.com/invite/ZsVD744QY2" isExternal>
             <Icon as={FaDiscord} boxSize={16} color="blue.500" />
           </Link>
-          <Link href="https://www.warwicksu.com/societies-sports/societies/gosociety/" isExternal>
-            <Image src={logo} boxSize={16}/>
+          <Link
+            href="https://www.warwicksu.com/societies-sports/societies/gosociety/"
+            isExternal
+          >
+            <Image src={logo} boxSize={16} />
           </Link>
         </HStack>
       </Box>
@@ -84,6 +88,6 @@ const HomePage = () => {
       </Box>
     </Container>
   );
-}
+};
 
 export default HomePage;

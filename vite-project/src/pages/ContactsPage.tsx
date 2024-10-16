@@ -1,58 +1,123 @@
-import { Box, Container, Heading, Link, List, ListItem, Text } from "@chakra-ui/react"
+import {
+  Box,
+  Image,
+  Text,
+  Flex,
+  Link,
+  Heading,
+  Container,
+} from "@chakra-ui/react";
+import xiheng from "../assets/ceo.jpg";
 
-const ContactsPage = () => {
-    return (
-        <Container
-          minW="70vw"
-          boxShadow="lg"
-          bg="rgba(0,0,0,0.8)"
-          textColor="gray.300"
-          p={8}
-        >
-          <Heading as="h1" size="xl" mb={6} textAlign="center" color="teal.300">
-            Welcome to the University Go Society
-          </Heading>
-    
-          <Box mb={8}>
-            <Text fontSize="lg">
-              Welcome to the official homepage of the University Go Society! We are
-              a community of Go enthusiasts who meet regularly to play, learn, and
-              enjoy the game together.
-            </Text>
-          </Box>
-    
-          <Box mb={8}>
-            <Heading as="h2" size="lg" mb={4} color="teal.300">
-              About Us
-            </Heading>
-            <Text mb={4}>
-              Our society is open to players of all levels, whether you're just
-              getting started or an experienced player. We host weekly sessions,
-              tournaments, and other events.
-            </Text>
-            <List spacing={3}>
-              <ListItem>Weekly Go meetups</ListItem>
-              <ListItem>Monthly tournaments</ListItem>
-              <ListItem>Workshops for beginners and advanced players</ListItem>
-            </List>
-          </Box>
-    
-          <Box textAlign="center">
-            <Link
-              href="https://example.com"
-              isExternal
-              color="teal.300"
-              fontSize="lg"
-            >
-              Visit our external website for more info!
-            </Link>
-          </Box>
-    
-          <Box mt={10} textAlign="center">
-            <Text>&copy; 2024 University Go Society</Text>
-          </Box>
-        </Container>
-      );
+interface ContactCardProps {
+  name: string;
+  picture: string;
+  position: string;
+  email: string;
 }
+
+const ContactCard: React.FC<ContactCardProps> = ({
+  name,
+  picture,
+  position,
+  email,
+}) => {
+  return (
+    <Box
+      bg="gray.800" // Dark gray background
+      color="gray.300" // Light gray text color
+      borderRadius="lg"
+      boxShadow="lg"
+      p={6}
+      maxW="sm"
+      textAlign="center"
+      _hover={{
+        transform: "scale(1.05)", // Slight scale effect on hover
+        transition: "all 0.3s ease",
+      }}
+    >
+      <Image
+        borderRadius="full"
+        boxSize="120px"
+        src={picture}
+        alt={`${name}'s picture`}
+        mx="auto"
+        mb={4}
+      />
+      <Heading as="h3" size="lg" mb={2}>
+        {name}
+      </Heading>
+      <Text fontSize="md" fontWeight="bold" mb={2} color="gray.400">
+        {position}
+      </Text>
+      <Link href={`mailto:${email}`} color="gray.500" fontSize="sm" isExternal>
+        {email}
+      </Link>
+    </Box>
+  );
+};
+
+const ContactsPage: React.FC = () => {
+  const contacts: ContactCardProps[] = [
+    {
+      name: "Xiheng Yao",
+      picture: xiheng, // Replace with actual image URL
+      position: "CEO",
+      email: "xiheng.yao@warwick.ac.uk",
+    },
+    {
+      name: "Xiheng Yao",
+      picture: xiheng, // Replace with actual image URL
+      position: "CEO",
+      email: "xiheng.yao@warwick.ac.uk",
+    },
+    {
+      name: "Xiheng Yao",
+      picture: xiheng, // Replace with actual image URL
+      position: "CEO",
+      email: "xiheng.yao@warwick.ac.uk",
+    },
+    {
+      name: "Xiheng Yao",
+      picture: xiheng, // Replace with actual image URL
+      position: "CEO",
+      email: "xiheng.yao@warwick.ac.uk",
+    },
+    {
+      name: "Xiheng Yao",
+      picture: xiheng, // Replace with actual image URL
+      position: "CEO",
+      email: "xiheng.yao@warwick.ac.uk",
+    },
+    {
+      name: "Xiheng Yao",
+      picture: xiheng, // Replace with actual image URL
+      position: "CEO",
+      email: "xiheng.yao@warwick.ac.uk",
+    },
+  ];
+
+  return (
+    <Container
+      minW="70vw"
+      boxShadow="lg"
+      bg="rgba(0,0,0,0.8)"
+      textColor="gray.300"
+      p={8}
+    >
+      <Flex
+        justifyContent="center"
+        alignItems="center"
+        wrap="wrap"
+        gap={6}
+        p={8}
+      >
+        {contacts.map((contact, index) => (
+          <ContactCard key={index} {...contact} />
+        ))}
+      </Flex>
+    </Container>
+  );
+};
 
 export default ContactsPage;

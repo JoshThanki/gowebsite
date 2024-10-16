@@ -16,7 +16,8 @@
     "strict": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
-    "noFallthroughCasesInSwitch": true
+    "noFallthroughCasesInSwitch": true,
+    "types": ["./src/types/react-masonry-css"]
   },
   "include": ["vite.config.ts"]
 }

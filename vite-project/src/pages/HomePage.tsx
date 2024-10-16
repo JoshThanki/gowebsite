@@ -23,7 +23,7 @@ const HomePage = () => {
       mt={4}
       p={8}
     >
-      <Heading as="h1" size="xl" mb={6} textAlign="center" color="teal.300">
+      <Heading as="h1" size="xl" mb={6} textAlign="center" color="gray.200">
         Welcome to the University Go Society
       </Heading>
 
@@ -36,7 +36,7 @@ const HomePage = () => {
       </Box>
 
       <Box mb={8}>
-        <Heading as="h2" size="lg" mb={4} color="teal.300">
+        <Heading as="h2" size="lg" mb={4} color="gray.200">
           About Us
         </Heading>
         <Text mb={4}>
@@ -53,7 +53,7 @@ const HomePage = () => {
 
       {/*link box */}
       <Box mb={8} textAlign="center">
-        <Heading as="h3" size="md" mb={4} color="teal.300">
+        <Heading as="h3" size="md" mb={4} color="gray.200">
           Connect with Us
         </Heading>
         <HStack spacing={8} justify="center">
@@ -76,7 +76,7 @@ const HomePage = () => {
         <Link
           href="https://example.com"
           isExternal
-          color="teal.300"
+          color="gray.200"
           fontSize="lg"
         >
           Visit our external website for more info!

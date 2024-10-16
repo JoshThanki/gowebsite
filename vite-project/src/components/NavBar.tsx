@@ -45,12 +45,14 @@ const NavBar = () => {
   return (
     <Flex>
       <Flex
+        position="fixed"
         direction="row"
         align="center"
         bg="gray.900"
         p={4}
         w="100vw"
         h="5vh"
+        zIndex={100}
         justifyContent="space-between"
       >
         <Box height="250%" p={0}>

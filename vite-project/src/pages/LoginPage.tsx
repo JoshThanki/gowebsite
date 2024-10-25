@@ -15,6 +15,27 @@ import {
 } from "@chakra-ui/react";
 import { Link, useNavigate } from "react-router-dom";
 
+const getErrorMessage = (error: any) => {
+  switch (error) {
+    case 'Firebase: Error (auth/invalid-email).':
+        return 'The email address is not valid.';
+    case 'Firebase: Error (auth/user-disabled).':
+        return 'This user has been disabled.';
+    case 'Firebase: Error (auth/user-not-found).':
+        return 'No user found with this username.';
+    case 'Firebase: Error (auth/wrong-password).':
+        return 'The password is incorrect.';
+    case 'Firebase: Error (auth/email-already-in-use).':
+        return 'This email is already in use.';
+    case 'Firebase: Error (auth/invalid-credential).':
+        return 'Incorrect username or password.';  
+
+    default:
+        return error;
+  }
+};
+
+
 const LoginPage: React.FC = () => {
   const [username, setUsername] = useState<string>("");
   const [password, setPassword] = useState<string>("");
@@ -35,13 +56,6 @@ const LoginPage: React.FC = () => {
     return userNamePattern.test(username);
   };
 
-  const handleBlur = () => {
-    if (!validateUsername()) {
-      setError("Use student id");
-    } else {
-      setError(null);
-    }
-  };
 
   const handlePasswordChange = (e: ChangeEvent<HTMLInputElement>) => {
     setPassword(e.target.value);
@@ -93,7 +107,6 @@ const LoginPage: React.FC = () => {
                 value={username}
                 onChange={handleUsernameChange}
                 placeholder="Enter your username"
-                onBlur={handleBlur}
                 required
               />
             </FormControl>
@@ -107,8 +120,8 @@ const LoginPage: React.FC = () => {
                 onChange={handlePasswordChange}
                 placeholder="Enter your password"
                 required
-              />
-              {error && <FormErrorMessage>{error}</FormErrorMessage>}
+                />
+                {error && <FormErrorMessage>{getErrorMessage(error)}</FormErrorMessage>}
             </FormControl>
 
             {/* Submit Button */}

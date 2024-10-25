@@ -43,126 +43,110 @@ const NavBar = () => {
   };
 
   return (
-    <Flex>
-      <Flex
-        position="fixed"
-        direction="row"
-        align="center"
-        bg="gray.900"
-        p={4}
-        w="100vw"
-        h="5vh"
-        zIndex={100}
-        justifyContent="space-between"
-      >
-        <Box height="250%" p={0}>
-          <Link
-            to="/"
-            onClick={() => handleLinkClick("home")}
-            style={{ padding: 0, margin: 0 }}
-          >
-            <Image
-              src={logo}
-              objectFit="contain"
-              height="100%"
-              width="auto"
-              p={0}
-              m={0}
-              display="block"
-            />
-          </Link>
-        </Box>
+    <Flex
+      as="nav"
+      position="fixed"
+      direction="row"
+      align="center"
+      bg="gray.900"
+      p={0} // Optional: Remove padding to keep the height consistent
+      w="100vw"
+      h="5vh" // Fixed height for navbar
+      zIndex={100}
+      justifyContent="space-between"
+    >
+      {/* Logo */}
+      <Box height="100%" p={0} display="flex" alignItems="center">
+        <Link to="/" onClick={() => handleLinkClick("home")}>
+          <Image
+            src={logo}
+            height="5vh" // Fixed height relative to navbar
+            width="auto" // Automatically adjust width to maintain aspect ratio
+            maxWidth="120px" // Prevents horizontal resizing beyond this width
+            objectFit="contain" // Ensures the image fits within the specified height
+            p={0}
+            m={0}
+          />
+        </Link>
+      </Box>
 
-        <HStack spacing="30px">
-          {" "}
-          <Link to="/" onClick={() => handleLinkClick("home")}>
-            <HStack>
-              <Text
-                fontWeight="bold"
-                fontSize="20px"
-                fontFamily="Inter, sans-serif"
-                color={activeLink === "home" ? "gray.500" : "gray.300"}
-              >
-                Home
-              </Text>
-            </HStack>
-          </Link>
-          {/* <Link to="/playgo" onClick={() => handleLinkClick("playgo")}>
-            <HStack>
-              <Text
-                fontWeight="bold"
-                fontSize="20px"
-                fontFamily="Inter, sans-serif"
-                color={activeLink === "playgo" ? "gray.500" : "gray.300"}
-              >
-                Play Go
-              </Text>
-            </HStack>
-          </Link> */}
-          <Link to="/images" onClick={() => handleLinkClick("images")}>
-            <HStack>
-              <Text
-                fontWeight="bold"
-                fontSize="20px"
-                fontFamily="Inter, sans-serif"
-                color={activeLink === "images" ? "gray.500" : "gray.300"}
-              >
-                Images
-              </Text>
-            </HStack>
-          </Link>
-          <Link to="/timetable" onClick={() => handleLinkClick("timetable")}>
-            <HStack>
-              <Text
-                fontWeight="bold"
-                fontSize="20px"
-                fontFamily="Inter, sans-serif"
-                color={activeLink === "timetable" ? "gray.500" : "gray.300"}
-              >
-                Events
-              </Text>
-            </HStack>
-          </Link>
-          <Link to="/contacts" onClick={() => handleLinkClick("contacts")}>
-            <HStack>
-              <Text
-                fontWeight="bold"
-                fontSize="20px"
-                fontFamily="Inter, sans-serif"
-                color={activeLink === "contacts" ? "gray.500" : "gray.300"}
-              >
-                Contacts
-              </Text>
-            </HStack>
-          </Link>
-        </HStack>
-
-        <HStack>
-          {user ? (
-            <>
-              <Button
-                onClick={handleLogout}
-                colorScheme="red"
-                variant="ghost"
-                textColor="white"
-                _hover={{ bg: "red.600", color: "white" }}
-              >
-                Logout
-              </Button>
-              {/* <Text color="white">Logged in</Text> */}
-            </>
-          ) : (
-            <Button
-              onClick={() => navigate("/login")}
-              textColor="gray.300"
-              variant="ghost"
-              _hover={{ bg: "red.600", color: "white" }}
+      {/* Links */}
+      <HStack spacing="2rem">
+        <Link to="/" onClick={() => handleLinkClick("home")}>
+          <HStack>
+            <Text
+              fontWeight="bold"
+              fontSize="1.25rem" // Use rem for consistent scaling
+              fontFamily="Inter, sans-serif"
+              color={activeLink === "home" ? "gray.500" : "gray.300"}
             >
-              Log in
-            </Button>
-          )}
-        </HStack>
-      </Flex>
+              Home
+            </Text>
+          </HStack>
+        </Link>
+        <Link to="/images" onClick={() => handleLinkClick("images")}>
+          <HStack>
+            <Text
+              fontWeight="bold"
+              fontSize="1.25rem"
+              fontFamily="Inter, sans-serif"
+              color={activeLink === "images" ? "gray.500" : "gray.300"}
+            >
+              Images
+            </Text>
+          </HStack>
+        </Link>
+        <Link to="/timetable" onClick={() => handleLinkClick("timetable")}>
+          <HStack>
+            <Text
+              fontWeight="bold"
+              fontSize="1.25rem"
+              fontFamily="Inter, sans-serif"
+              color={activeLink === "timetable" ? "gray.500" : "gray.300"}
+            >
+              Events
+            </Text>
+          </HStack>
+        </Link>
+        <Link to="/contacts" onClick={() => handleLinkClick("contacts")}>
+          <HStack>
+            <Text
+              fontWeight="bold"
+              fontSize="1.25rem"
+              fontFamily="Inter, sans-serif"
+              color={activeLink === "contacts" ? "gray.500" : "gray.300"}
+            >
+              Contacts
+            </Text>
+          </HStack>
+        </Link>
+      </HStack>
+
+      {/* Authentication Buttons */}
+      <HStack>
+        {user ? (
+          <Button
+            onClick={handleLogout}
+            colorScheme="red"
+            variant="ghost"
+            textColor="white"
+            _hover={{ bg: "red.600", color: "white" }}
+            fontSize="1rem"
+          >
+            Logout
+          </Button>
+        ) : (
+          <Button
+            onClick={() => navigate("/login")}
+            textColor="gray.300"
+            variant="ghost"
+            _hover={{ bg: "red.600", color: "white" }}
+            fontSize="1rem"
+          >
+            Log in
+          </Button>
+        )}
+      </HStack>
     </Flex>
   );
 };

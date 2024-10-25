@@ -62,6 +62,24 @@ const RegisterPage: React.FC = () => {
     }
   };
 
+  const getErrorMessage = (error: any) => {
+    switch (error) {
+        case 'Firebase: Error (auth/invalid-email).':
+            return 'The email address is not valid.';
+        case 'Firebase: Error (auth/user-disabled).':
+            return 'This user has been disabled.';
+        case 'Firebase: Error (auth/user-not-found).':
+            return 'No user found with this email.';
+        case 'Firebase: Error (auth/wrong-password).':
+            return 'The password is incorrect.';
+        case 'Firebase: Error (auth/email-already-in-use).':
+            return 'This username is already in use.';
+        default:
+            return error;
+    }
+};
+
+
   return (
     <Box
       width="100vw"
@@ -108,7 +126,7 @@ const RegisterPage: React.FC = () => {
                 placeholder="Enter your password"
                 required
               />
-              {error && <FormErrorMessage>{error}</FormErrorMessage>}
+              {error && <FormErrorMessage>{getErrorMessage(error)}</FormErrorMessage>}
             </FormControl>
 
             <Button type="submit" colorScheme="blue" width="full">

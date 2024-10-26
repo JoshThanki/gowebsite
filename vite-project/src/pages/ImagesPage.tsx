@@ -43,7 +43,7 @@ const ImageGallery: React.FC = () => {
   ];
 
   // Number of columns will change based on screen width
-  const breakpointColumns = useBreakpointValue({ base: 1, md: 2, lg: 3, xl: 4 });
+  const breakpointColumns = useBreakpointValue({ base: 1, md: 2, lg: 3, xl: 3 });
 
   return (
     <Container

@@ -9,6 +9,7 @@ import {
   ListItem,
   Text,
   Image,
+  Divider,
 } from "@chakra-ui/react";
 import { FaInstagram, FaDiscord } from "react-icons/fa";
 import logo from "../assets/su-logo.svg";
@@ -23,18 +24,26 @@ const HomePage = () => {
       p={8}
     >
       <Heading as="h1" size="xl" mb={6} textAlign="center" color="gray.200">
-        Welcome to the official homepage of University of Warwick Go Society!
+        University of Warwick Go Society Homepage
       </Heading>
 
       <Box mb={8}>
         <Text fontSize="lg">
-        Go (aka Weiqi / Igo / Baduk) originated and was invented in China over 4000 years ago. 
-        The few simple rules of the game branch out into a fantastic range of practically infinite possibilities and paths of play. 
-        Every game, with only the alternating placement of black and white stones on a board with intersecting lines, tells a beautiful story of war, entailing sacrifice, strategy, and struggle.
-        Go is still the world's oldest board game continuously played today, and with Warwick Go Society you can meet others who play Go, and learn how to play Go yourself. 
-        You can find details of when and where we meet below, so mark your diaries, and come along to our regular sessions!
+          Go (aka Weiqi / Igo / Baduk) originated and was invented in China over
+          4000 years ago. The few simple rules of the game branch out into a
+          fantastic range of practically infinite possibilities entirely based
+          on your own decisions.
         </Text>
-
+        <Box my={4} />
+        <Text fontSize="lg">
+          Every game, with only the alternating placement of black and white
+          stones on a board with intersecting lines, tells a beautiful story of
+          war, entailing sacrifice, strategy, and struggle. Go is still the
+          world's oldest board game continuously played today, and with Warwick
+          Go Society you can meet others who play Go, and learn how to play Go
+          yourself. You can find details of when and where we meet below, so
+          mark your diaries, and come along to our regular sessions!
+        </Text>
       </Box>
 
       <Box mb={8}>
@@ -42,15 +51,13 @@ const HomePage = () => {
           About Us
         </Heading>
         <Text mb={4}>
-          Our society is open to players of all levels, whether you're just
-          getting started or an experienced player. We host weekly sessions,
-          tournaments, and other events.
+          Our society is open to players of all levels, from beginners to
+          experienced 5-dan players. You can find an opponent who is of equal
+          strength on the society ladder. We host weekly sessions, official
+          tournaments with other unis in the UK, as well as a variety of collabs
+          with a multitude of different societies within Warwick, such as Japan
+          Society and Mahjong Society.
         </Text>
-        <List spacing={3}>
-          <ListItem>Weekly Go meetups</ListItem>
-          <ListItem>Monthly tournaments</ListItem>
-          <ListItem>Workshops for beginners and advanced players</ListItem>
-        </List>
       </Box>
 
       {/*link box */}

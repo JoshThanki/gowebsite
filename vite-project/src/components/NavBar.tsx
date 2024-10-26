@@ -70,6 +70,7 @@ const NavBar = () => {
         </Link>
       </Box>
 
+<<<<<<< Updated upstream
       {/* Links */}
       <HStack spacing="2rem">
         <Link to="/" onClick={() => handleLinkClick("home")}>
@@ -79,6 +80,106 @@ const NavBar = () => {
               fontSize="1.25rem" // Use rem for consistent scaling
               fontFamily="Inter, sans-serif"
               color={activeLink === "home" ? "gray.500" : "gray.300"}
+=======
+        <HStack spacing="30px">
+          {" "}
+          <Link to="/" onClick={() => handleLinkClick("home")}>
+            <HStack>
+              <Text
+                fontWeight="bold"
+                fontSize="20px"
+                fontFamily="Inter, sans-serif"
+                color={activeLink === "home" ? "gray.500" : "gray.300"}
+              >
+                Home
+              </Text>
+            </HStack>
+          </Link>
+          {/* <Link to="/playgo" onClick={() => handleLinkClick("playgo")}>
+            <HStack>
+              <Text
+                fontWeight="bold"
+                fontSize="20px"
+                fontFamily="Inter, sans-serif"
+                color={activeLink === "playgo" ? "gray.500" : "gray.300"}
+              >
+                Play Go
+              </Text>
+            </HStack>
+          </Link> */}
+          <Link to="/images" onClick={() => handleLinkClick("images")}>
+            <HStack>
+              <Text
+                fontWeight="bold"
+                fontSize="20px"
+                fontFamily="Inter, sans-serif"
+                color={activeLink === "images" ? "gray.500" : "gray.300"}
+              >
+                Images
+              </Text>
+            </HStack>
+          </Link>
+          <Link to="/timetable" onClick={() => handleLinkClick("timetable")}>
+            <HStack>
+              <Text
+                fontWeight="bold"
+                fontSize="20px"
+                fontFamily="Inter, sans-serif"
+                color={activeLink === "timetable" ? "gray.500" : "gray.300"}
+              >
+                Events
+              </Text>
+            </HStack>
+          </Link>
+          <Link to="/contacts" onClick={() => handleLinkClick("contacts")}>
+            <HStack>
+              <Text
+                fontWeight="bold"
+                fontSize="20px"
+                fontFamily="Inter, sans-serif"
+                color={activeLink === "contacts" ? "gray.500" : "gray.300"}
+              >
+                Contacts
+              </Text>
+            </HStack>
+          </Link>
+          {user && (
+            <Link to="/playGo" onClick={() => handleLinkClick("playGo")}>
+              <HStack>
+                <Text
+                  fontWeight="bold"
+                  fontSize="20px"
+                  fontFamily="Inter, sans-serif"
+                  color={activeLink === "playGo" ? "gray.500" : "gray.300"}
+                >
+                  Play Go
+                </Text>
+              </HStack>
+            </Link>
+          )}
+        </HStack>
+
+        <HStack>
+          {user ? (
+            <>
+              <Button
+                onClick={handleLogout}
+                colorScheme="red"
+                variant="ghost"
+                textColor="white"
+                _hover={{ bg: "red.600", color: "white" }}
+              >
+                Logout
+              </Button>
+              {/* <Text color="white">Logged in</Text> */}
+            </>
+          ) : (
+            <Button
+              onClick={() => navigate("/login")}
+              textColor="gray.300"
+              variant="ghost"
+              _hover={{ bg: "red.600", color: "white" }}
+>>>>>>> Stashed changes
             >
               Home
             </Text>

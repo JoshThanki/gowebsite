@@ -52,11 +52,11 @@ const NavBar = () => {
       justifyContent="space-between"
     >
       {/* Logo */}
-      <Box height="100%" p={0} display="flex" alignItems="center" ml={5}>
+      <Box height="100%" p={0} display="flex" alignItems="center" mx={3}>
         <Link to="/" onClick={() => handleLinkClick("home")}>
           <Image
             src={logo}
-            height="4.5vh" // Fixed height relative to navbar
+            height="3vh" // Fixed height relative to navbar
             width="auto" // Automatically adjust width to maintain aspect ratio
             maxWidth="120px" // Prevents horizontal resizing beyond this width
             objectFit="contain" // Ensures the image fits within the specified height
@@ -72,7 +72,7 @@ const NavBar = () => {
           <HStack>
             <Text
               fontWeight="bold"
-              fontSize="1.25rem" // Use rem for consistent scaling
+              fontSize={{ base: "sm", md: "lg" }}
               fontFamily="Inter, sans-serif"
               color={activeLink === "home" ? "gray.500" : "gray.300"}
             >
@@ -84,7 +84,7 @@ const NavBar = () => {
           <HStack>
             <Text
               fontWeight="bold"
-              fontSize="1.25rem"
+              fontSize={{ base: "sm", md: "lg" }}
               fontFamily="Inter, sans-serif"
               color={activeLink === "images" ? "gray.500" : "gray.300"}
             >
@@ -96,7 +96,7 @@ const NavBar = () => {
           <HStack>
             <Text
               fontWeight="bold"
-              fontSize="1.25rem"
+              fontSize={{ base: "sm", md: "lg" }}
               fontFamily="Inter, sans-serif"
               color={activeLink === "timetable" ? "gray.500" : "gray.300"}
             >
@@ -108,7 +108,7 @@ const NavBar = () => {
           <HStack>
             <Text
               fontWeight="bold"
-              fontSize="1.25rem"
+              fontSize={{ base: "sm", md: "lg" }}
               fontFamily="Inter, sans-serif"
               color={activeLink === "contacts" ? "gray.500" : "gray.300"}
             >
@@ -122,7 +122,7 @@ const NavBar = () => {
             <HStack>
               <Text
                 fontWeight="bold"
-                fontSize="20px"
+                fontSize={{ base: "sm", md: "lg" }}
                 fontFamily="Inter, sans-serif"
                 color={activeLink === "playGo" ? "gray.500" : "gray.300"}
               >

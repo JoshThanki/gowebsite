@@ -1,15 +1,11 @@
 import { SetStateAction, useEffect, useState } from "react";
-import { Text, HStack, Image, Box, Flex, Button } from "@chakra-ui/react";
-import { onAuthStateChanged, signOut } from "firebase/auth";
-import { Link, useLocation, useNavigate } from "react-router-dom";
-import { auth } from "../services/firebaseConfig";
+import { Text, HStack, Image, Box, Flex } from "@chakra-ui/react";
+import { Link, useLocation } from "react-router-dom";
 import logo from "../assets/go-logo.png";
 
 const NavBar = () => {
   const [activeLink, setActiveLink] = useState("");
   const location = useLocation();
-  const [user, setUser] = useState<any>(null);
-  const navigate = useNavigate();
 
   const handleLinkClick = (link: SetStateAction<string>) => {
     setActiveLink(link);
@@ -24,23 +20,23 @@ const NavBar = () => {
     }
   }, [location.pathname]);
 
-  useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
-      setUser(currentUser);
-    });
+  // useEffect(() => {
+  //   const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+  //     setUser(currentUser);
+  //   });
 
-    return () => unsubscribe();
-  }, []);
+  //   return () => unsubscribe();
+  // }, []);
 
-  const handleLogout = async () => {
-    try {
-      await signOut(auth);
-      setUser(null);
-      navigate("login");
-    } catch (err: any) {
-      console.log("error logging out", err);
-    }
-  };
+  // const handleLogout = async () => {
+  //   try {
+  //     await signOut(auth);
+  //     setUser(null);
+  //     navigate("login");
+  //   } catch (err: any) {
+  //     console.log("error logging out", err);
+  //   }
+  // };
 
   return (
     <Flex
@@ -56,11 +52,11 @@ const NavBar = () => {
       justifyContent="space-between"
     >
       {/* Logo */}
-      <Box height="100%" p={0} display="flex" alignItems="center">
+      <Box height="100%" p={0} display="flex" alignItems="center" mx={3}>
         <Link to="/" onClick={() => handleLinkClick("home")}>
           <Image
             src={logo}
-            height="5vh" // Fixed height relative to navbar
+            height="3vh" // Fixed height relative to navbar
             width="auto" // Automatically adjust width to maintain aspect ratio
             maxWidth="120px" // Prevents horizontal resizing beyond this width
             objectFit="contain" // Ensures the image fits within the specified height
@@ -71,12 +67,12 @@ const NavBar = () => {
       </Box>
 
       {/* Links */}
-      <HStack spacing="2rem">
+      <HStack spacing={{ base: "1rem", md: "2rem" }}>
         <Link to="/" onClick={() => handleLinkClick("home")}>
           <HStack>
             <Text
               fontWeight="bold"
-              fontSize="1.25rem" // Use rem for consistent scaling
+              fontSize={{ base: "sm", md: "lg" }}
               fontFamily="Inter, sans-serif"
               color={activeLink === "home" ? "gray.500" : "gray.300"}
             >
@@ -88,7 +84,7 @@ const NavBar = () => {
           <HStack>
             <Text
               fontWeight="bold"
-              fontSize="1.25rem"
+              fontSize={{ base: "sm", md: "lg" }}
               fontFamily="Inter, sans-serif"
               color={activeLink === "images" ? "gray.500" : "gray.300"}
             >
@@ -100,7 +96,7 @@ const NavBar = () => {
           <HStack>
             <Text
               fontWeight="bold"
-              fontSize="1.25rem"
+              fontSize={{ base: "sm", md: "lg" }}
               fontFamily="Inter, sans-serif"
               color={activeLink === "timetable" ? "gray.500" : "gray.300"}
             >
@@ -112,7 +108,7 @@ const NavBar = () => {
           <HStack>
             <Text
               fontWeight="bold"
-              fontSize="1.25rem"
+              fontSize={{ base: "sm", md: "lg" }}
               fontFamily="Inter, sans-serif"
               color={activeLink === "contacts" ? "gray.500" : "gray.300"}
             >
@@ -120,10 +116,25 @@ const NavBar = () => {
             </Text>
           </HStack>
         </Link>
-      </HStack>
 
+        {
+          <a href="/playGo" onClick={() => handleLinkClick("playGo")}>
+            <HStack>
+              <Text
+                fontWeight="bold"
+                fontSize={{ base: "sm", md: "lg" }}
+                fontFamily="Inter, sans-serif"
+                color={activeLink === "playGo" ? "gray.500" : "gray.300"}
+              >
+                Play Go
+              </Text>
+            </HStack>
+          </a>
+        }
+      </HStack>
+      <HStack></HStack>
       {/* Authentication Buttons */}
-      <HStack>
+      {/* <HStack>
         {user ? (
           <Button
             onClick={handleLogout}
@@ -146,7 +157,7 @@ const NavBar = () => {
             Log in
           </Button>
         )}
-      </HStack>
+      </HStack> */}
     </Flex>
   );
 };

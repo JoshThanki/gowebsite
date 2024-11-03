@@ -1,0 +1,323 @@
+$cellSize: 20;
+$boardColor: #E9C372;
+$lineColor: #522;
+@use "sass:color";
+
+
+
+@mixin disableHighlight() {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;    
+  user-select: none;
+}
+
+@mixin blackStone() {
+  box-sizing: border-box;
+  left: 0;
+  background-color:black;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  box-shadow: 1px 1px 1px #404040;
+  background-image: -webkit-radial-gradient( 40% 40%, circle closest-corner, #404040 0%, rgba(0, 0, 0, 0) 90%);
+  background-image: -moz-radial-gradient( 40% 40%, circle closest-side, #404040 0%, rgba(0, 0, 0, 0) 90%);   
+}
+
+@mixin whiteStone() {
+  left: 0;
+  box-sizing: border-box;
+  background-color: white;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  box-shadow: 1px 1px 1px #404040 , inset -3px -3px 5px gray;  
+}
+
+@mixin starPoint() {
+  background-image: -webkit-radial-gradient(center, circle closest-side, $lineColor 20%, rgba(0, 0, 0, 0) 30%);
+  background-image: -moz-radial-gradient(center, circle closest-side, $lineColor 20%, rgba(0, 0, 0, 0) 30%);
+}
+
+*, *:before, *:after {
+  -moz-box-sizing: border-box; 
+  -webkit-box-sizing: border-box; 
+  box-sizing: border-box;
+ }
+
+.goGame {
+  display: inline-block;  
+  cursor: pointer;
+  div {
+    margin: 0;
+    padding: 0;
+  }
+
+  .goControls {
+    background-color: $boardColor;
+    @include disableHighlight();
+    border-left: 7px solid rgba(200,200,200,0.5);
+    border-top: 7px solid rgba(200,200,200,0.2);
+    border-right: 7px solid rgba(0,0,0,0.7);
+    border-bottom: 7px solid rgba(0,0,0,0.5);  
+    .controlRow {
+      div {
+        display: inline-block;
+        border: 1px solid $lineColor;
+        box-shadow: 1px 1px 1px $lineColor;
+        margin: 2px;
+        padding: 3px;
+        &:hover {
+          background-color: color.adjust($boardColor, $lightness: -20%)
+        }
+      }
+    }
+    .treeBox {
+      display: block;
+      border: 1px solid $lineColor;
+      position: relative;
+      overflow: hidden;
+      white-space: nowrap;
+      div {
+        white-space: nowrap;
+      }
+      .tree {
+        position: relative;
+        padding: 10px;
+        
+        .line {
+          padding: 0;
+          margin: 0;
+          position: absolute;
+          height: 0px;
+          border: 1px solid black;
+          z-index: 1;
+          box-shadow: 1px 1px 1px #404040;
+          &.active {
+            border-color: blue;
+            box-shadow: 1px 1px 1px white;
+          }
+        }
+        .branches {
+          display:inline-block;
+          // margin-left: 10px;
+        }
+        .branch {
+          vertical-align: top;
+          display: block;
+         
+          
+          .stone {
+            vertical-align: top;
+            position: relative;
+            top: 0px;
+            display: inline-block;
+            z-index: 10;
+            margin-left: 15px;
+            margin-bottom: 15px;
+            &.white {
+              @include whiteStone();
+              width: 20px;
+              height: 20px;
+            }
+            &.black {
+              @include blackStone(); 
+              width: 20px;
+              height: 20px;
+            }
+            &.start {
+              background-color: $boardColor;
+              border-radius: 50%;
+              border: 1px solid black;
+              box-shadow: 1px 1px 1px #404040;
+              width: 20px;
+              height: 20px;
+            }
+            &.current {
+              border: 2px solid red;
+              box-shadow: 1px 1px 1px black;
+            }
+          }
+        }
+      }
+    }
+  }
+  .goPlayers {
+    
+    background-color: $boardColor;
+    @include disableHighlight();
+    border-left: 7px solid rgba(200,200,200,0.5);
+    border-top: 7px solid rgba(200,200,200,0.2);
+    border-right: 7px solid rgba(0,0,0,0.7);
+    border-bottom: 7px solid rgba(0,0,0,0.5);
+    
+    font-size: 0;
+    
+    .stats {
+      width: 50%;
+      padding: 5px;
+      display: inline-block;
+      white-space: nowrap;
+      
+      &:first-child {
+        border-right: 1px solid $lineColor;
+      }
+      .pass {
+        vertical-align: top;
+        margin-left: 5px;
+        margin-right: 5px;
+        padding: 3px;
+        display: inline-block;
+        font-size: 22px;
+        border: 1px solid $lineColor;
+        border-radius: 4px;
+        box-shadow: 1px 1px 2px $lineColor;
+      }
+      .captures {
+        font-size: 22px;
+        margin-right: 10px;
+        display: inline-block;
+        float:right;
+      }
+      .stone {
+        display: inline-block;
+      }
+    }
+  }
+  &.white .goPlayers .white.stats {
+    background-color: color.adjust($boardColor, $lightness: -20%)
+  }
+   &.black .goPlayers .black.stats {
+    background-color: color.adjust($boardColor, $lightness: -20%)
+  } 
+  .goPlayers {     
+    .white.stats {
+      .stone {
+        &:after {
+          @include whiteStone(); 
+          width: 30px;
+          height: 30px;
+          content: '';
+          display: inline-block;
+        }
+      }
+    } 
+  }
+  .goPlayers {
+    .black.stats {
+      .stone {
+        &:after{
+          @include blackStone();
+          width: 30px;
+          height: 30px;
+          content: '';
+          display: inline-block;
+        }
+      }
+    }
+  }
+  .goBoard {
+    display: inline-block;
+    border: 1px solid $lineColor; 
+    background-color: $boardColor;
+    @include disableHighlight();
+
+    cursor: pointer;
+  }
+  &.white .goBoard .cell:not(.black):not(.white):hover {
+    &:after {
+      @include whiteStone();  
+      opacity:0.5
+    } 
+    &:before {
+      display:none;
+    }
+  }
+  &.black .goBoard .cell:not(.black):not(.white):hover {
+    &:after {
+      @include blackStone();
+      opacity:0.5;
+    }
+    &:before {
+      display:none;
+    }
+  }
+  .goBoard .row {
+    font-size: 0px;
+    .cell {
+      width: #{$cellSize}px;
+      height: #{$cellSize+1}px;
+      display: inline-block;
+      position: relative;
+      &:after {
+        margin: auto;
+        position: absolute;
+        top: 0; left: 0; bottom: 0; right: 0;
+        content: "";
+        background-color: $lineColor;
+        width: 100%;
+        height: 1px;
+      }
+      &:before {   
+        margin: auto;
+        position: absolute;
+        top: 0; left: 0; bottom: 0; right: 0;
+        content: "";
+        background-color: $lineColor;
+        width: 1px;
+        height: 100%;
+      }
+      &:first-child {
+        &:after {
+          width: 50%;
+          left: 50%;
+        }
+      }
+      &:last-child {
+        &:after {
+          width: 50%;
+          right: 50%;
+        }
+      } 
+      &.star {
+        @include starPoint();
+      }
+      &.dead:after {
+        opacity:0.5
+      }
+      &.dead:before {
+        display:none;
+      }
+      &.black:after {
+        @include blackStone();
+      }
+      &.white:after {
+        @include whiteStone();
+      }
+      &.counted-black {
+        background-color: black;
+      }
+      &.counted-white {
+        background-color: white;
+      }
+    }
+    &:first-child {
+      .cell {
+        &:before {
+          height: 50%;
+          top: 50%;
+        } 
+      }
+    }
+    &:last-child {
+      .cell {
+        &:before {
+          height: 50%;
+          bottom: 50%;
+        }
+      }
+    }       
+  }
+}

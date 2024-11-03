@@ -12,45 +12,38 @@ const Timetable = () => {
   const events = [
     {
       day: "Wednesday",
-      date: "18/10/2024",
+      date: "06/11/2024",
       time: "2:00 PM",
       event: "Club Session",
-      location: "FAB3.17",
+      location: "FAB5.04",
     },
     {
       day: "Wednesday",
-      date: "25/10/2024",
+      date: "13/11/2024",
       time: "2:00 PM",
       event: "Club Session",
-      location: "FAB3.17",
+      location: "FAB5.04",
     },
     {
       day: "Wednesday",
-      date: "01/11/2024",
+      date: "20/11/2024",
       time: "2:00 PM",
       event: "Club Session",
-      location: "FAB3.17",
+      location: "B2.04",
     },
     {
       day: "Wednesday",
-      date: "08/11/2024",
+      date: "27/11/2024",
       time: "2:00 PM",
       event: "Club Session",
-      location: "FAB3.17",
+      location: "FAB5.04",
     },
     {
       day: "Wednesday",
-      date: "15/11/2024",
+      date: "5/12/2024",
       time: "2:00 PM",
       event: "Club Session",
-      location: "FAB3.17",
-    },
-    {
-      day: "Wednesday",
-      date: "22/11/2024",
-      time: "2:00 PM",
-      event: "Club Session",
-      location: "FAB3.17",
+      location: "FAB5.04",
     },
   ];
 
@@ -60,10 +53,16 @@ const Timetable = () => {
       boxShadow="lg"
       bg="rgba(0,0,0,0.8)"
       textColor="gray.300"
-      mt={4}
       p={8}
     >
-      <Heading as="h1" size="xl" mb={6} textAlign="center" color="gray.300">
+      <Heading
+        as="h1"
+        size="xl"
+        mb={6}
+        textAlign="center"
+        color="gray.300"
+        mt={2}
+      >
         Go Society Events
       </Heading>
 

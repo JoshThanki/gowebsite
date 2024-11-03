@@ -6,7 +6,7 @@ import RegisterPage from "./pages/RegisterPage";
 import PlayGo from "./pages/PlayGo";
 import Timetable from "./pages/Timetable";
 import ContactsPage from "./pages/ContactsPage";
-import LoginPage from "./pages/LoginPage";
+import LoginPage from "./hooks/LoginPage";
 import SuccessfulSignUp from "./pages/SuccesfulSignUp";
 import ImagesPage from "./pages/ImagesPage";
 

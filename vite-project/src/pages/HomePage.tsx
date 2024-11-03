@@ -79,17 +79,6 @@ const HomePage = () => {
         </HStack>
       </Box>
 
-      <Box textAlign="center">
-        <Link
-          href="https://example.com"
-          isExternal
-          color="gray.200"
-          fontSize="lg"
-        >
-          Visit our external website for more info!
-        </Link>
-      </Box>
-
       <Box mt={10} textAlign="center">
         <Text>&copy; 2024 University Go Society</Text>
       </Box>

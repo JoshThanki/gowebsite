@@ -5,11 +5,8 @@ import {
   HStack,
   Icon,
   Link,
-  List,
-  ListItem,
   Text,
   Image,
-  Divider,
 } from "@chakra-ui/react";
 import { FaInstagram, FaDiscord } from "react-icons/fa";
 import logo from "../assets/su-logo.svg";
@@ -22,6 +19,7 @@ const HomePage = () => {
       bg="rgba(0,0,0,0.8)"
       textColor="gray.300"
       p={8}
+      mt={3}
     >
       <Heading as="h1" size="xl" mb={6} textAlign="center" color="gray.200">
         University of Warwick Go Society Homepage

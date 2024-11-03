@@ -1,15 +1,11 @@
 import { SetStateAction, useEffect, useState } from "react";
-import { Text, HStack, Image, Box, Flex, Button } from "@chakra-ui/react";
-import { onAuthStateChanged, signOut } from "firebase/auth";
-import { Link, useLocation, useNavigate } from "react-router-dom";
-import { auth } from "../services/firebaseConfig";
+import { Text, HStack, Image, Box, Flex } from "@chakra-ui/react";
+import { Link, useLocation } from "react-router-dom";
 import logo from "../assets/go-logo.png";
 
 const NavBar = () => {
   const [activeLink, setActiveLink] = useState("");
   const location = useLocation();
-  const [user, setUser] = useState<any>(null);
-  const navigate = useNavigate();
 
   const handleLinkClick = (link: SetStateAction<string>) => {
     setActiveLink(link);
@@ -24,23 +20,23 @@ const NavBar = () => {
     }
   }, [location.pathname]);
 
-  useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
-      setUser(currentUser);
-    });
+  // useEffect(() => {
+  //   const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+  //     setUser(currentUser);
+  //   });
 
-    return () => unsubscribe();
-  }, []);
+  //   return () => unsubscribe();
+  // }, []);
 
-  const handleLogout = async () => {
-    try {
-      await signOut(auth);
-      setUser(null);
-      navigate("login");
-    } catch (err: any) {
-      console.log("error logging out", err);
-    }
-  };
+  // const handleLogout = async () => {
+  //   try {
+  //     await signOut(auth);
+  //     setUser(null);
+  //     navigate("login");
+  //   } catch (err: any) {
+  //     console.log("error logging out", err);
+  //   }
+  // };
 
   return (
     <Flex
@@ -121,8 +117,8 @@ const NavBar = () => {
           </HStack>
         </Link>
 
-        {user && (
-          <Link to="/playGo" onClick={() => handleLinkClick("playGo")}>
+        {
+          <a href="/playGo" onClick={() => handleLinkClick("playGo")}>
             <HStack>
               <Text
                 fontWeight="bold"
@@ -133,12 +129,12 @@ const NavBar = () => {
                 Play Go
               </Text>
             </HStack>
-          </Link>
-        )}
+          </a>
+        }
       </HStack>
-
+      <HStack></HStack>
       {/* Authentication Buttons */}
-      <HStack>
+      {/* <HStack>
         {user ? (
           <Button
             onClick={handleLogout}
@@ -161,7 +157,7 @@ const NavBar = () => {
             Log in
           </Button>
         )}
-      </HStack>
+      </HStack> */}
     </Flex>
   );
 };

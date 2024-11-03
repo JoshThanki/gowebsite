@@ -727,118 +727,118 @@
 
   };
 
-  //donothing
-  TreeView = class TreeView {
-    constructor(id, game) {
-      this.clicked = this.clicked.bind(this);
-      this.$el = $(`${id} .tree`);
-      this.game = game;
-    }
+  // //donothing
+  // TreeView = class TreeView {
+  //   constructor(id, game) {
+  //     this.clicked = this.clicked.bind(this);
+  //     this.$el = $(`${id} .tree`);
+  //     this.game = game;
+  //   }
 
-    render() {
-      this.$el.html(this.renderTree(this.game.move_tree));
-      this.renderLines();
-      return this.$el.find('.stone').on('click', this.clicked);
-    }
+  //   render() {
+  //     this.$el.html(this.renderTree(this.game.move_tree));
+  //     this.renderLines();
+  //     return this.$el.find('.stone').on('click', this.clicked);
+  //   }
 
-    renderLines() {
-      var dest, i, len, ref, results, stone;
-      ref = this.$el.find('.stone');
-      results = [];
-      for (i = 0, len = ref.length; i < len; i++) {
-        stone = ref[i];
-        results.push((function() {
-          var j, len1, ref1, results1;
-          ref1 = $(stone).parent().children('.branches').children('.branch').children('.stone');
-          results1 = [];
-          for (j = 0, len1 = ref1.length; j < len1; j++) {
-            dest = ref1[j];
-            results1.push(this.drawLine(stone, dest));
-          }
-          return results1;
-        }).call(this));
-      }
-      return results;
-    }
+  //   renderLines() {
+  //     var dest, i, len, ref, results, stone;
+  //     ref = this.$el.find('.stone');
+  //     results = [];
+  //     for (i = 0, len = ref.length; i < len; i++) {
+  //       stone = ref[i];
+  //       results.push((function() {
+  //         var j, len1, ref1, results1;
+  //         ref1 = $(stone).parent().children('.branches').children('.branch').children('.stone');
+  //         results1 = [];
+  //         for (j = 0, len1 = ref1.length; j < len1; j++) {
+  //           dest = ref1[j];
+  //           results1.push(this.drawLine(stone, dest));
+  //         }
+  //         return results1;
+  //       }).call(this));
+  //     }
+  //     return results;
+  //   }
 
-    drawLine(stone, dest) {
-      var a, active, as, b, bs, c, d, el, et, sl, st;
-      st = stone.offsetTop;
-      sl = stone.offsetLeft;
-      et = dest.offsetTop;
-      el = dest.offsetLeft;
-      active = $(dest).data('branch').active;
-      a = et - st;
-      b = el - sl;
-      as = Math.pow(a, 2);
-      bs = Math.pow(b, 2);
-      c = Math.sqrt(as + bs);
-      d = Math.atan2(a, b) * 180 / Math.PI;
-      return this.$el.append($('<div>').addClass('line').toggleClass('active', active).css({
-        width: `${c}px`,
-        top: st + 9,
-        left: sl + 8,
-        transform: `rotate(${d}deg)`,
-        'transform-origin': "0 0"
-      }));
-    }
+  //   drawLine(stone, dest) {
+  //     var a, active, as, b, bs, c, d, el, et, sl, st;
+  //     st = stone.offsetTop;
+  //     sl = stone.offsetLeft;
+  //     et = dest.offsetTop;
+  //     el = dest.offsetLeft;
+  //     active = $(dest).data('branch').active;
+  //     a = et - st;
+  //     b = el - sl;
+  //     as = Math.pow(a, 2);
+  //     bs = Math.pow(b, 2);
+  //     c = Math.sqrt(as + bs);
+  //     d = Math.atan2(a, b) * 180 / Math.PI;
+  //     return this.$el.append($('<div>').addClass('line').toggleClass('active', active).css({
+  //       width: `${c}px`,
+  //       top: st + 9,
+  //       left: sl + 8,
+  //       transform: `rotate(${d}deg)`,
+  //       'transform-origin': "0 0"
+  //     }));
+  //   }
 
-    clicked(e) {
-      var branch, current, i, len, move, moves;
-      branch = $(e.currentTarget).data('branch');
-      if (branch.active) {
-        while (!branch.currentMove()) {
-          this.game.goForward();
-        }
-        while (!branch.current_move) {
-          this.game.goBack();
-        }
-      } else {
-        moves = [branch];
-        while (moves[0].active === false) {
-          moves.unshift(moves[0].parent);
-        }
-        current = moves.shift();
-        if (current.parentArray().length < this.game.move_tree.currentMove().parentArray().length) {
-          while (!current.current_move) {
-            this.game.goBack();
-          }
-        } else {
-          while (!current.current_move) {
-            this.game.goForward();
-          }
-        }
-        current.activeBranch().deactivate();
-        for (i = 0, len = moves.length; i < len; i++) {
-          move = moves[i];
-          move.active = true;
-        }
-        while (!branch.currentMove()) {
-          this.game.goForward();
-        }
-        branch.activateDefault();
-      }
-      return this.render();
-    }
+  //   clicked(e) {
+  //     var branch, current, i, len, move, moves;
+  //     branch = $(e.currentTarget).data('branch');
+  //     if (branch.active) {
+  //       while (!branch.currentMove()) {
+  //         this.game.goForward();
+  //       }
+  //       while (!branch.current_move) {
+  //         this.game.goBack();
+  //       }
+  //     } else {
+  //       moves = [branch];
+  //       while (moves[0].active === false) {
+  //         moves.unshift(moves[0].parent);
+  //       }
+  //       current = moves.shift();
+  //       if (current.parentArray().length < this.game.move_tree.currentMove().parentArray().length) {
+  //         while (!current.current_move) {
+  //           this.game.goBack();
+  //         }
+  //       } else {
+  //         while (!current.current_move) {
+  //           this.game.goForward();
+  //         }
+  //       }
+  //       current.activeBranch().deactivate();
+  //       for (i = 0, len = moves.length; i < len; i++) {
+  //         move = moves[i];
+  //         move.active = true;
+  //       }
+  //       while (!branch.currentMove()) {
+  //         this.game.goForward();
+  //       }
+  //       branch.activateDefault();
+  //     }
+  //     return this.render();
+  //   }
 
-    renderTree(tree) {
-      var $b, $bs, branch, i, len, ref;
-      $b = $('<div>').addClass('branch');
-      $b.append(this.renderNode(tree));
-      $bs = $('<div>').addClass('branches');
-      ref = tree.move_branches;
-      for (i = 0, len = ref.length; i < len; i++) {
-        branch = ref[i];
-        $bs.append(this.renderTree(branch));
-      }
-      return $b.append($bs);
-    }
+  //   renderTree(tree) {
+  //     var $b, $bs, branch, i, len, ref;
+  //     $b = $('<div>').addClass('branch');
+  //     $b.append(this.renderNode(tree));
+  //     $bs = $('<div>').addClass('branches');
+  //     ref = tree.move_branches;
+  //     for (i = 0, len = ref.length; i < len; i++) {
+  //       branch = ref[i];
+  //       $bs.append(this.renderTree(branch));
+  //     }
+  //     return $b.append($bs);
+  //   }
 
-    renderNode(b) {
-      return $("<div>").addClass('stone').addClass(`${b.stone.color || 'start'}`).toggleClass('current', b.current_move).data('branch', b);
-    }
+  //   renderNode(b) {
+  //     return $("<div>").addClass('stone').addClass(`${b.stone.color || 'start'}`).toggleClass('current', b.current_move).data('branch', b);
+  //   }
 
-  };
+  // };
 
   GoGame = class GoGame {
     constructor(id) {

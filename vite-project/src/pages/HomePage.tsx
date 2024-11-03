@@ -19,9 +19,15 @@ const HomePage = () => {
       bg="rgba(0,0,0,0.8)"
       textColor="gray.300"
       p={8}
-      mt={3}
     >
-      <Heading as="h1" size="xl" mb={6} textAlign="center" color="gray.200">
+      <Heading
+        as="h1"
+        size="xl"
+        mb={6}
+        textAlign="center"
+        color="gray.200"
+        mt={2}
+      >
         University of Warwick Go Society Homepage
       </Heading>
 

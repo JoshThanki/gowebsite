@@ -53,10 +53,16 @@ const Timetable = () => {
       boxShadow="lg"
       bg="rgba(0,0,0,0.8)"
       textColor="gray.300"
-      mt={4}
       p={8}
     >
-      <Heading as="h1" size="xl" mb={6} textAlign="center" color="gray.300">
+      <Heading
+        as="h1"
+        size="xl"
+        mb={6}
+        textAlign="center"
+        color="gray.300"
+        mt={2}
+      >
         Go Society Events
       </Heading>
 

@@ -60,39 +60,39 @@ const ContactCard: React.FC<ContactCardProps> = ({
 const ContactsPage: React.FC = () => {
   const contacts: ContactCardProps[] = [
     {
-      name: "Xiheng Yao",
+      name: "Xiheng",
       picture: xiheng, // Replace with actual image URL
-      position: "CEO",
+      position: "President",
       email: "xiheng.yao@warwick.ac.uk",
     },
     {
-      name: "Xiheng Yao",
+      name: "Naman",
       picture: xiheng, // Replace with actual image URL
-      position: "CEO",
+      position: "Secretary",
       email: "xiheng.yao@warwick.ac.uk",
     },
     {
-      name: "Xiheng Yao",
+      name: "Joseph ",
       picture: xiheng, // Replace with actual image URL
-      position: "CEO",
+      position: "Publicity",
       email: "xiheng.yao@warwick.ac.uk",
     },
     {
-      name: "Xiheng Yao",
+      name: "Wenzhou",
       picture: xiheng, // Replace with actual image URL
-      position: "CEO",
+      position: "Media",
       email: "xiheng.yao@warwick.ac.uk",
     },
     {
-      name: "Xiheng Yao",
+      name: "Matas",
       picture: xiheng, // Replace with actual image URL
-      position: "CEO",
+      position: "Tech",
       email: "xiheng.yao@warwick.ac.uk",
     },
     {
-      name: "Xiheng Yao",
+      name: "Josh",
       picture: xiheng, // Replace with actual image URL
-      position: "CEO",
+      position: "Tech Lead",
       email: "xiheng.yao@warwick.ac.uk",
     },
   ];
@@ -105,12 +105,23 @@ const ContactsPage: React.FC = () => {
       textColor="gray.300"
       p={8}
     >
+      <Heading
+        as="h1"
+        size="xl"
+        mb={4}
+        textAlign="center"
+        color="gray.300"
+        p={3}
+        mt={4}
+      >
+        Contacts
+      </Heading>
       <Flex
         justifyContent="center"
         alignItems="center"
         wrap="wrap"
         gap={6}
-        p={8}
+        p={3}
       >
         {contacts.map((contact, index) => (
           <ContactCard key={index} {...contact} />

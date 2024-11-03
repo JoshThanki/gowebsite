@@ -67,7 +67,7 @@ const NavBar = () => {
       </Box>
 
       {/* Links */}
-      <HStack spacing="2rem">
+      <HStack spacing={{ base: "1rem", md: "2rem" }}>
         <Link to="/" onClick={() => handleLinkClick("home")}>
           <HStack>
             <Text

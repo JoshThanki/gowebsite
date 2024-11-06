@@ -14,13 +14,16 @@ import logo from "../assets/su-logo.svg";
 const HomePage = () => {
   return (
     <Container
-      maxW={{ base: '100vw', lg: '80vw' }} 
+      maxWidth={{ base: '100vw', lg: '80vw' }} 
+      minHeight="100vh"
       boxShadow="lg"
-      bg="rgba(0,0,0,0.8)"
+      background="rgba(0,0,0,0.8)"
       textColor="gray.300"
       paddingTop="3.5rem"
       fontFamily="Arial, sans-serif"
       color = "#c2bdb9"
+      display={"flex"}
+      flexDirection="column"
     >
       <Heading
         as="h1"
@@ -121,8 +124,8 @@ const HomePage = () => {
         </HStack>
       </Box>
 
-      <Box mt={10} textAlign="center">
-        <Text>&copy; 2024 University Go Society</Text>
+      <Box mt="auto" textAlign="center" color = "#e8e6e3">
+        <Text>&copy; 2024 University of Warwick Go Society</Text>
       </Box>
     </Container>
   );

@@ -55,6 +55,7 @@ const Events = () => {
       textColor="gray.300"
       p={8}
       paddingTop={"3.5rem"}
+      minHeight={"100vh"}
     >
       <Heading
         as="h1"

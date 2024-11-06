@@ -155,9 +155,10 @@ const ContactsPage: React.FC = () => {
 
   return (
     <Container
-      maxW={{ base: '100vw', lg: '80vw' }}
+      maxWidth={{ base: '100vw', lg: '80vw' }}
+      minHeight="100vh"
       boxShadow="lg"
-      bg="rgba(0,0,0,0.8)"
+      background="rgba(0,0,0,0.8)"
       textColor="gray.300"
       padding={8}
       paddingTop="3.5rem"

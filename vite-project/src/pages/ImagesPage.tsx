@@ -32,55 +32,22 @@ const ImageGallery: React.FC = () => {
     }
   );
 
-  // const images: ImageData[] = [
-  //   { src: "https://picsum.photos/600/400", caption: "Image 1" },
-  //   { src: "https://picsum.photos/800/600", caption: "Image 2" },
-  //   { src: "https://picsum.photos/1200/800", caption: "Image 3" },
-  //   { src: "https://picsum.photos/1000/500", caption: "Image 4" },
-  //   { src: "https://picsum.photos/800/400", caption: "Image 5" },
-  //   { src: "https://picsum.photos/700/400", caption: "Image 6" },
-  //   { src: "https://picsum.photos/900/600", caption: "Image 7" },
-  //   { src: "https://picsum.photos/600/400", caption: "Image 8" },
-  //   { src: "https://picsum.photos/1200/900", caption: "Image 9" },
-  //   { src: "https://picsum.photos/800/600", caption: "Image 10" },
-  //   { src: "https://picsum.photos/600/400", caption: "Image 1" },
-  //   { src: "https://picsum.photos/800/600", caption: "Image 2" },
-  //   { src: "https://picsum.photos/1200/800", caption: "Image 3" },
-  //   { src: "https://picsum.photos/1000/500", caption: "Image 4" },
-  //   { src: "https://picsum.photos/800/400", caption: "Image 5" },
-  //   { src: "https://picsum.photos/700/400", caption: "Image 6" },
-  //   { src: "https://picsum.photos/900/600", caption: "Image 7" },
-  //   { src: "https://picsum.photos/600/400", caption: "Image 8" },
-  //   { src: "https://picsum.photos/1200/900", caption: "Image 9" },
-  //   { src: "https://picsum.photos/800/600", caption: "Image 10" },
-  //   { src: "https://picsum.photos/600/400", caption: "Image 1" },
-  //   { src: "https://picsum.photos/800/600", caption: "Image 2" },
-  //   { src: "https://picsum.photos/1200/800", caption: "Image 3" },
-  //   { src: "https://picsum.photos/1000/500", caption: "Image 4" },
-  //   { src: "https://picsum.photos/800/400", caption: "Image 5" },
-  //   { src: "https://picsum.photos/700/400", caption: "Image 6" },
-  //   { src: "https://picsum.photos/900/600", caption: "Image 7" },
-  //   { src: "https://picsum.photos/600/400", caption: "Image 8" },
-  //   { src: "https://picsum.photos/1200/900", caption: "Image 9" },
-  //   { src: "https://picsum.photos/800/600", caption: "Image 10" },
-  // ];
-
   // Number of columns will change based on screen width
   const breakpointColumns = useBreakpointValue({
     base: 1,
     md: 2,
-    lg: 3,
-    xl: 4,
+    lg: 2,
+    xl: 3,
   });
 
   return (
     <Container
-      minW="70vw"
+      maxW={{ base: '100vw', lg: '80vw' }}
       boxShadow="lg"
       bg="rgba(0,0,0,0.8)"
       textColor="gray.300"
       p={8}
-      pt={12}
+      pt={16}
     >
       <Box
         sx={{

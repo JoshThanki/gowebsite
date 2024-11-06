@@ -14,32 +14,38 @@ import logo from "../assets/su-logo.svg";
 const HomePage = () => {
   return (
     <Container
-      minW="70vw"
+      maxW={{ base: '100vw', lg: '80vw' }} 
       boxShadow="lg"
       bg="rgba(0,0,0,0.8)"
       textColor="gray.300"
       p={8}
+      pt={16}
+      fontFamily="Arial, sans-serif"
+      fontSize={"1.5rem"}
+      color = "#c2bdb9"
     >
       <Heading
         as="h1"
         size="xl"
-        mb={6}
+        mb={6}   
         textAlign="center"
-        color="gray.200"
         mt={2}
+        fontFamily="Helvetica Neue Bold, sans-serif"
+        color = "#e8e6e3"
+        fontSize={"3rem"}
       >
         Warwick Go Society Homepage
       </Heading>
 
       <Box mb={8}>
-        <Text fontSize="lg">
+        <Text fontSize="2rem">
           Go (aka Weiqi / Igo / Baduk) originated and was invented in China over
           4000 years ago. The few simple rules of the game branch out into a
           fantastic range of practically infinite possibilities entirely based
           on your own decisions.
         </Text>
         <Box my={4} />
-        <Text fontSize="lg">
+        <Text fontSize="2rem">
           Every game, with only the alternating placement of black and white
           stones on a board with intersecting lines, tells a beautiful story of
           war, entailing sacrifice, strategy, and struggle. Go is still the
@@ -51,10 +57,18 @@ const HomePage = () => {
       </Box>
 
       <Box mb={8}>
-        <Heading as="h2" size="lg" mb={4} color="gray.200">
+        <Heading 
+          as = "h2"
+          size = "lg" 
+          mb = {4}
+          color = "#e8e6e3"
+          fontFamily = "sans-serif"
+          fontSize={"3rem"}
+          textAlign={"center"}
+        >
           About Us
         </Heading>
-        <Text mb={4}>
+        <Text mb={4} fontSize={"2rem"}>
           Our society is open to players of all levels, from beginners to
           experienced 5-dan players. You can find an opponent who is of equal
           strength on the society ladder. We host weekly sessions, official
@@ -66,21 +80,28 @@ const HomePage = () => {
 
       {/*link box */}
       <Box mb={8} textAlign="center">
-        <Heading as="h3" size="md" mb={4} color="gray.200">
-          Connect with Us
+        <Heading
+          as="h2"
+          size="md"
+          mb={4}
+          color="#e8e6e3" 
+          fontFamily="sans-serif"
+          fontSize={"2rem"}
+        >
+          Connect with us
         </Heading>
         <HStack spacing={8} justify="center">
           <Link href="https://www.instagram.com/gosocwarwick" isExternal>
-            <Icon as={FaInstagram} boxSize={16} color="pink.400" />
+            <Icon as={FaInstagram} boxSize={24} color="pink.400" />
           </Link>
           <Link href="https://discord.com/invite/ZsVD744QY2" isExternal>
-            <Icon as={FaDiscord} boxSize={16} color="blue.500" />
+            <Icon as={FaDiscord} boxSize={24} color="blue.500" />
           </Link>
           <Link
             href="https://www.warwicksu.com/societies-sports/societies/gosociety/"
             isExternal
           >
-            <Image src={logo} boxSize={16} />
+            <Image src={logo} boxSize={24} />
           </Link>
         </HStack>
       </Box>

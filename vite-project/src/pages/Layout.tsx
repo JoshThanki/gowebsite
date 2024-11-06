@@ -9,7 +9,6 @@ const Layout = () => {
     <Flex h="100vh" flexDir="column">
       {" "}
       <NavBar />
-      <Box h="5vh" />      
       <Box flex="1" 
            backgroundImage={backgroundImage}
            backgroundSize="cover" 

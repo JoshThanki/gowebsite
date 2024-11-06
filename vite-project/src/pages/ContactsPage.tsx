@@ -2,18 +2,19 @@ import {
   Box,
   Image,
   Text,
-  Flex,
   Link,
   Heading,
   Container,
+  SimpleGrid,
 } from "@chakra-ui/react";
-import xiheng from "../assets/execPhotos/ceo.jpg";
+import xiheng from "../assets/execPhotos/xiheng.jpg";
 import josh from "../assets/execPhotos/josh.jpeg";
 import joseph from "../assets/execPhotos/joseph.jpeg";
-import matas from "../assets/execPhotos/matas.png";
-import naman from "../assets/execPhotos/naman2.png";
+import matas from "../assets/execPhotos/matas.jpg";
+import naman from "../assets/execPhotos/naman.png";
 import jason from "../assets/execPhotos/jason.jpeg";
 import edmund from "../assets/execPhotos/edmund.jpeg";
+import wenzhou from "../assets/execPhotos/wenzhou.jpg";
 
 interface ContactCardProps {
   name: string;
@@ -30,19 +31,23 @@ const ContactCard: React.FC<ContactCardProps> = ({
 }) => {
   return (
     <Box
-      bg="gray.800" // Dark gray background
-      color="gray.300" // Light gray text color
+      bg="rgba(60,60,60,0.3)" // Dark gray background
       borderRadius="lg"
       boxShadow="lg"
       p={6}
       pb={4}
-      w="220px" // Fixed width
-      h="311px" // Fixed height
+      w="100%" // Fixed width
+      h="280px" // Fixed height
       textAlign="center"
       _hover={{
         transform: "scale(1.05)", // Slight scale effect on hover
         transition: "all 0.3s ease",
       }}
+      style={{
+        backdropFilter: "blur(10px)", // Frosted glass effect
+        WebkitBackdropFilter: "blur(10px)",
+      }}
+      fontFamily={"sans-serif"}
     >
       <Image
         borderRadius="full"
@@ -53,26 +58,33 @@ const ContactCard: React.FC<ContactCardProps> = ({
         mb={4}
         objectFit="cover" // Prevents image from being squashed
       />
-      <Heading as="h3" size="lg" mb={2} isTruncated>
+      <Heading
+        as="h3"
+        size="lg"
+        mb={2}
+        isTruncated
+        fontFamily={"sans-serif"}
+        color="#e8e6e3"
+      >
         {name}
       </Heading>
       <Text
         fontSize="md"
         fontWeight="bold"
         mb={2}
-        color="gray.400"
         noOfLines={1}
         css={{
           whiteSpace: "nowrap",
           overflow: "hidden",
           textOverflow: "ellipsis",
         }}
+        fontFamily="sans-serif"
+        color="#e8e6e3"
       >
         {position}
       </Text>
       <Link
         href={`mailto:${email}`}
-        color="gray.500"
         fontSize="sm"
         noOfLines={1}
         css={{
@@ -81,6 +93,7 @@ const ContactCard: React.FC<ContactCardProps> = ({
           textOverflow: "ellipsis",
         }}
         isExternal
+        color="#cdc8c2"
       >
         {email}
       </Link>
@@ -115,7 +128,7 @@ const ContactsPage: React.FC = () => {
       email: "edmund.smith@warwick.ac.uk",
     },
     {
-      name: "Jason",
+      name: "Jiaxi",
       picture: jason, // Replace with actual image URL
       position: "Training Officer",
       email: "jiaxi.feng@warwick.ac.uk",
@@ -134,7 +147,7 @@ const ContactsPage: React.FC = () => {
     },
     {
       name: "Wenzhou",
-      picture: xiheng, // Replace with actual image URL
+      picture: wenzhou, // Replace with actual image URL
       position: "Publicity Officer",
       email: "wenzhou.mei@warwick.ac.uk",
     },
@@ -142,33 +155,33 @@ const ContactsPage: React.FC = () => {
 
   return (
     <Container
-      minW="70vw"
+      maxW={{ base: '100vw', lg: '80vw' }}
       boxShadow="lg"
       bg="rgba(0,0,0,0.8)"
       textColor="gray.300"
       p={8}
+      pt={10}
     >
       <Heading
         as="h1"
-        size="xl"
         textAlign="center"
-        color="gray.300"
-        p={3}
-        mt={4}
+        pt={8}
+        mb={6}
+        fontFamily="sans-serif"
+        fontSize={"3rem"}
+        color="#e8e6e3"
       >
         Contacts
       </Heading>
-      <Flex
-        justifyContent="center"
-        alignItems="center"
-        wrap="wrap"
-        gap={6}
-        p={3}
+      <SimpleGrid
+        columns={{ base: 1, sm: 2, md: 2, lg: 3 }} 
+        spacing={4} 
+        w="100%" 
       >
         {contacts.map((contact, index) => (
           <ContactCard key={index} {...contact} />
         ))}
-      </Flex>
+      </SimpleGrid>
     </Container>
   );
 };

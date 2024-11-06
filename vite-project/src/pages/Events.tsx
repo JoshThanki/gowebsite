@@ -49,7 +49,7 @@ const Events = () => {
 
   return (
     <Container
-      minW="70vw"
+      maxW={{ base: '100vw', lg: '80vw' }}
       boxShadow="lg"
       bg="rgba(0,0,0,0.8)"
       textColor="gray.300"
@@ -57,37 +57,50 @@ const Events = () => {
     >
       <Heading
         as="h1"
-        size="xl"
-        mb={6}
         textAlign="center"
-        color="gray.300"
-        mt={2}
+        pt={10}
+        mb={6}
+        fontFamily="sans-serif"
+        fontSize={"3rem"}
+        color="#e8e6e3"
       >
         Go Society Events
       </Heading>
 
-      <SimpleGrid columns={[1, 2, 3]} spacing={6}>
+      <SimpleGrid 
+        columns={{ base: 1, sm: 2, md: 2, lg: 3 }} 
+        spacing={4} 
+        w="100%" 
+      >
         {events.map((event, index) => (
           <Box
             key={index}
             p={4}
-            bg="gray.700"
             borderRadius="md"
             boxShadow="md"
             textAlign="center"
-            color="gray.300"
             minW="220px"
+            color="#e8e6e3"
+            bg="rgba(60,60,60,0.3)"
+            _hover={{
+              transform: "scale(1.05)", // Slight scale effect on hover
+              transition: "all 0.3s ease",
+            }}
+            style={{
+              backdropFilter: "blur(10px)", // Frosted glass effect
+              WebkitBackdropFilter: "blur(10px)",
+            }}
           >
             <VStack spacing={2}>
-              <Text fontWeight="bold" fontSize="lg">
+              <Text fontWeight="bold" fontSize="lg" color="#e8e6e3">
                 {event.day}
               </Text>
-              <Text fontSize="sm" color="gray.400">
+              <Text fontSize="sm" color="#e8e6e3">
                 {event.date}
               </Text>
-              <Text fontSize="md">{event.time}</Text>
-              <Text fontSize="md">{event.event}</Text>
-              <Text fontSize="sm" color="gray.400">
+              <Text fontSize="md" color="#e8e6e3">{event.time}</Text>
+              <Text fontSize="md" color="#e8e6e3">{event.event}</Text>
+              <Text fontSize="sm" color="#e8e6e3">
                 Location: {event.location}
               </Text>
             </VStack>

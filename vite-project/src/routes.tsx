@@ -4,7 +4,7 @@ import ErrorPage from "./pages/ErrorPage";
 import HomePage from "./pages/HomePage";
 import RegisterPage from "./pages/RegisterPage";
 import PlayGo from "./pages/PlayGo";
-import Timetable from "./pages/Timetable";
+import Events from "./pages/Events";
 import ContactsPage from "./pages/ContactsPage";
 import LoginPage from "./hooks/LoginPage";
 import SuccessfulSignUp from "./pages/SuccesfulSignUp";
@@ -19,11 +19,11 @@ const router = createBrowserRouter([
       { path: "", element: <HomePage /> },
       { path: "playgo", element: <PlayGo /> },
       { path: "contacts", element: <ContactsPage /> },
-      { path: "timetable", element: <Timetable /> },
+      { path: "timetable", element: <Events /> },
       { path: "register", element: <RegisterPage /> },
       { path: "login", element: <LoginPage /> },
       { path: "signup-complete", element: <SuccessfulSignUp /> },
-      { path: "images", element: <ImagesPage />}
+      { path: "images", element: <ImagesPage /> },
     ],
   },
 ]);

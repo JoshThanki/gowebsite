@@ -7,7 +7,13 @@ import {
   Heading,
   Container,
 } from "@chakra-ui/react";
-import xiheng from "../assets/ceo.jpg";
+import xiheng from "../assets/execPhotos/ceo.jpg";
+import josh from "../assets/execPhotos/josh.jpeg";
+import joseph from "../assets/execPhotos/joseph.jpeg";
+import matas from "../assets/execPhotos/matas.png";
+import naman from "../assets/execPhotos/naman2.png";
+import jason from "../assets/execPhotos/jason.jpeg";
+import edmund from "../assets/execPhotos/edmund.jpeg";
 
 interface ContactCardProps {
   name: string;
@@ -29,7 +35,9 @@ const ContactCard: React.FC<ContactCardProps> = ({
       borderRadius="lg"
       boxShadow="lg"
       p={6}
-      maxW="sm"
+      pb={4}
+      w="220px" // Fixed width
+      h="311px" // Fixed height
       textAlign="center"
       _hover={{
         transform: "scale(1.05)", // Slight scale effect on hover
@@ -43,14 +51,37 @@ const ContactCard: React.FC<ContactCardProps> = ({
         alt={`${name}'s picture`}
         mx="auto"
         mb={4}
+        objectFit="cover" // Prevents image from being squashed
       />
-      <Heading as="h3" size="lg" mb={2}>
+      <Heading as="h3" size="lg" mb={2} isTruncated>
         {name}
       </Heading>
-      <Text fontSize="md" fontWeight="bold" mb={2} color="gray.400">
+      <Text
+        fontSize="md"
+        fontWeight="bold"
+        mb={2}
+        color="gray.400"
+        noOfLines={1}
+        css={{
+          whiteSpace: "nowrap",
+          overflow: "hidden",
+          textOverflow: "ellipsis",
+        }}
+      >
         {position}
       </Text>
-      <Link href={`mailto:${email}`} color="gray.500" fontSize="sm" isExternal>
+      <Link
+        href={`mailto:${email}`}
+        color="gray.500"
+        fontSize="sm"
+        noOfLines={1}
+        css={{
+          whiteSpace: "nowrap",
+          overflow: "hidden",
+          textOverflow: "ellipsis",
+        }}
+        isExternal
+      >
         {email}
       </Link>
     </Box>
@@ -66,34 +97,46 @@ const ContactsPage: React.FC = () => {
       email: "xiheng.yao@warwick.ac.uk",
     },
     {
-      name: "Naman",
-      picture: xiheng, // Replace with actual image URL
+      name: "Joseph",
+      picture: joseph, // Replace with actual image URL
       position: "Secretary",
-      email: "xiheng.yao@warwick.ac.uk",
+      email: "joseph.curtis@warwick.ac.uk",
     },
     {
-      name: "Joseph ",
-      picture: xiheng, // Replace with actual image URL
-      position: "Publicity",
-      email: "xiheng.yao@warwick.ac.uk",
+      name: "Naman ",
+      picture: naman, // Replace with actual image URL
+      position: "Treasurer",
+      email: "naman.maheshwari@warwick.ac.uk",
+    },
+    {
+      name: "Edmund",
+      picture: edmund, // Replace with actual image URL
+      position: "Logistics Officer",
+      email: "edmund.smith@warwick.ac.uk",
+    },
+    {
+      name: "Jason",
+      picture: jason, // Replace with actual image URL
+      position: "Training Officer",
+      email: "jiaxi.feng@warwick.ac.uk",
+    },
+    {
+      name: "Matas",
+      picture: matas, // Replace with actual image URL
+      position: "Tech Officer",
+      email: "matas.sabakinas@warwick.ac.uk",
+    },
+    {
+      name: "Josh",
+      picture: josh, // Replace with actual image URL
+      position: "Tech Officer",
+      email: "josh.thanki@warwick.ac.uk",
     },
     {
       name: "Wenzhou",
       picture: xiheng, // Replace with actual image URL
-      position: "Media",
-      email: "xiheng.yao@warwick.ac.uk",
-    },
-    {
-      name: "Matas",
-      picture: xiheng, // Replace with actual image URL
-      position: "Tech",
-      email: "xiheng.yao@warwick.ac.uk",
-    },
-    {
-      name: "Josh",
-      picture: xiheng, // Replace with actual image URL
-      position: "Tech Lead",
-      email: "xiheng.yao@warwick.ac.uk",
+      position: "Publicity Officer",
+      email: "wenzhou.mei@warwick.ac.uk",
     },
   ];
 
@@ -108,7 +151,6 @@ const ContactsPage: React.FC = () => {
       <Heading
         as="h1"
         size="xl"
-        mb={4}
         textAlign="center"
         color="gray.300"
         p={3}

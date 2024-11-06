@@ -7,14 +7,14 @@ import {
   VStack,
 } from "@chakra-ui/react";
 
-const Timetable = () => {
+const Events = () => {
   // Example data for the events with locations
   const events = [
     {
-      day: "Wednesday",
-      date: "06/11/2024",
+      day: "Sunday",
+      date: "10/11/2024",
       time: "2:00 PM",
-      event: "Club Session",
+      event: "Training Session",
       location: "FAB5.04",
     },
     {
@@ -98,4 +98,4 @@ const Timetable = () => {
   );
 };
 
-export default Timetable;
+export default Events;

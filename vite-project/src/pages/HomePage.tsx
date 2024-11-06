@@ -28,7 +28,7 @@ const HomePage = () => {
         color="gray.200"
         mt={2}
       >
-        University of Warwick Go Society Homepage
+        Warwick Go Society Homepage
       </Heading>
 
       <Box mb={8}>

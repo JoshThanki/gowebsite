@@ -159,13 +159,12 @@ const ContactsPage: React.FC = () => {
       boxShadow="lg"
       bg="rgba(0,0,0,0.8)"
       textColor="gray.300"
-      p={8}
-      pt={6}
+      padding={8}
+      paddingTop="3.5rem"
     >
       <Heading
         as="h1"
         textAlign="center"
-        pt={8}
         mb={6}
         fontFamily="sans-serif"
         fontSize={"3rem"}

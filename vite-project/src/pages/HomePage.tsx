@@ -18,18 +18,16 @@ const HomePage = () => {
       boxShadow="lg"
       bg="rgba(0,0,0,0.8)"
       textColor="gray.300"
-      padding={{base: 4, lg: 8}}
-      paddingTop={12}
+      paddingTop="3.5rem"
       fontFamily="Arial, sans-serif"
       color = "#c2bdb9"
     >
       <Heading
         as="h1"
         size="xl"
-        mb={6}   
         textAlign="center"
-        mt={2}
-        fontFamily="Helvetica Neue Bold, sans-serif"
+        // mt={{base: 4, lg: 8}}
+        fontFamily="sans-serif"
         color = "#e8e6e3"
         fontSize={{ base: '2rem', md: '3rem' }}
       >

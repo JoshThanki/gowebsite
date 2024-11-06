@@ -18,10 +18,9 @@ const HomePage = () => {
       boxShadow="lg"
       bg="rgba(0,0,0,0.8)"
       textColor="gray.300"
-      p={8}
-      pt={16}
+      padding={{base: 4, lg: 8}}
+      paddingTop={12}
       fontFamily="Arial, sans-serif"
-      fontSize={"1.5rem"}
       color = "#c2bdb9"
     >
       <Heading
@@ -32,20 +31,32 @@ const HomePage = () => {
         mt={2}
         fontFamily="Helvetica Neue Bold, sans-serif"
         color = "#e8e6e3"
-        fontSize={"3rem"}
+        fontSize={{ base: '2rem', md: '3rem' }}
       >
         Warwick Go Society Homepage
       </Heading>
 
       <Box mb={8}>
-        <Text fontSize="2rem">
+        <Text
+        fontSize={{ base: '1.3rem', md: '1.5rem' }} // fontSize changes based on screen size
+        sx={{
+          hyphens: { base: 'auto', md: 'none' }, // Hyphenation for small screens (base, sm), none for medium and up
+          wordWrap: 'break-word', // Always allow word wrapping
+        }}
+        > 
           Go (aka Weiqi / Igo / Baduk) originated and was invented in China over
           4000 years ago. The few simple rules of the game branch out into a
           fantastic range of practically infinite possibilities entirely based
           on your own decisions.
         </Text>
         <Box my={4} />
-        <Text fontSize="2rem">
+          <Text
+            fontSize={{ base: '1.3rem', md: '1.5rem' }} // fontSize changes based on screen size
+            sx={{
+              hyphens: { base: 'auto', md: 'none' }, // Hyphenation for small screens (base, sm), none for medium and up
+              wordWrap: 'break-word', // Always allow word wrapping
+            }}
+          > 
           Every game, with only the alternating placement of black and white
           stones on a board with intersecting lines, tells a beautiful story of
           war, entailing sacrifice, strategy, and struggle. Go is still the
@@ -63,12 +74,18 @@ const HomePage = () => {
           mb = {4}
           color = "#e8e6e3"
           fontFamily = "sans-serif"
-          fontSize={"3rem"}
+          fontSize={{ base: '2rem', md: '3rem' }}
           textAlign={"center"}
         >
           About Us
         </Heading>
-        <Text mb={4} fontSize={"2rem"}>
+        <Text
+          fontSize={{ base: '1.3rem', md: '1.5rem' }} // fontSize changes based on screen size
+          sx={{
+            hyphens: { base: 'auto', md: 'none' }, // Hyphenation for small screens (base, sm), none for medium and up
+            wordWrap: 'break-word', // Always allow word wrapping
+          }}
+        > 
           Our society is open to players of all levels, from beginners to
           experienced 5-dan players. You can find an opponent who is of equal
           strength on the society ladder. We host weekly sessions, official

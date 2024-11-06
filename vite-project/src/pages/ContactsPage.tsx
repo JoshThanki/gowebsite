@@ -160,7 +160,7 @@ const ContactsPage: React.FC = () => {
       bg="rgba(0,0,0,0.8)"
       textColor="gray.300"
       p={8}
-      pt={10}
+      pt={6}
     >
       <Heading
         as="h1"

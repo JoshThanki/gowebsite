@@ -46,10 +46,10 @@ const ImageGallery: React.FC = () => {
       boxShadow="lg"
       bg="rgba(0,0,0,0.8)"
       textColor="gray.300"
-      p={8}
-      pt={16}
+      p={{base: 4, lg: 8}}
     >
       <Box
+        pt={8}
         sx={{
           ".masonry-grid": {
             display: "flex",

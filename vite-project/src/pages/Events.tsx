@@ -58,7 +58,7 @@ const Events = () => {
       <Heading
         as="h1"
         textAlign="center"
-        pt={10}
+        pt={6}
         mb={6}
         fontFamily="sans-serif"
         fontSize={"3rem"}

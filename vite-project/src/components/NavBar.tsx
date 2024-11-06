@@ -1,5 +1,5 @@
 import { SetStateAction, useEffect, useState } from "react";
-import { Text, HStack, Image, Box, Flex } from "@chakra-ui/react";
+import { Text, HStack, Image, Flex } from "@chakra-ui/react";
 import { Link, useLocation } from "react-router-dom";
 import logo from "../assets/go-logo.png";
 
@@ -44,60 +44,55 @@ const NavBar = () => {
       position="fixed"
       direction="row"
       align="center"
-      bg = "rgba(10, 10, 10, .7)"
-      // bg="linear-gradient(135deg, rgba(10, 10, 10, .7), rgba(20, 20, 20, .7))"
-      borderBottom={"1px solid rgba(200,200,200,0.5)"}
-      p={0}
-      w="100vw"
-      h="5vh"
-      minHeight="24px"
-      zIndex={100}
       justifyContent="space-between"
+
+      bg = "rgba(10, 10, 10, .7)"
+      borderBottom={"1px solid rgba(200,200,200,0.5)"}
       style={{
         backdropFilter: "blur(10px)", // Frosted glass effect
         WebkitBackdropFilter: "blur(10px)",
       }}
+
+      padding={0}
+      width="100vw"
+      height="3.5rem"
+      zIndex={100}
+      
       fontFamily={"sans-serif"}
     >
       {/* Logo */}
-      <Box 
-        height="100%" 
-        p={0} 
-        display="flex" 
-        alignItems="center"
-        mx={3}
-      >
-        <Link to="/" onClick={() => handleLinkClick("home")}>
-          <Image
-            src={logo}
-            height="3vh" // Fixed height relative to navbar
-            width="auto" // Automatically adjust width to maintain aspect ratio
-            maxWidth="120px" // Prevents horizontal resizing beyond this width
-            objectFit="contain" // Ensures the image fits within the specified height
-            p={0}
-            m={0}
-          />
-        </Link>
-      </Box>
+      <Image
+        src={logo}
+        height="100%" // Fixed height relative to navbar
+        width="auto" // Automatically adjust width to maintain aspect ratio
+        maxWidth="120px" // Prevents horizontal resizing beyond this width
+        objectFit="contain" // Ensures the image fits within the specified height
+        p={1}
+        m={0}
+        display={{base: 'none', md: 'block'}}
+        position="absolute"
+      />
+  
 
       {/* Links */}
-      <HStack spacing={{ base: "1rem", md: "2rem" }}>
+      <HStack 
+        spacing={{ base: "1rem", md: "2rem" }}
+        flexGrow={1} // Allow HStack to take up available space
+        justifyContent="center"
+      >
         <Link to="/" onClick={() => handleLinkClick("home")}>
-          <HStack>
-            <Text
-              fontWeight="bold"
-              fontSize={{ base: "1.5rem", md: "2rem" }}
-              fontFamily="Inter, sans-serif"
-              textDecoration={activeLink === "home" ? "underline" : "none"}
-              color="#e8e6e3"
-            >
-              Home
-            </Text>
-          </HStack>
+          <Text
+            fontWeight="bold"
+            fontSize={{ base: "1.5rem", md: "2rem" }}
+            fontFamily="Inter, sans-serif"
+            textDecoration={activeLink === "home" ? "underline" : "none"}
+            color="#e8e6e3"
+          >
+            Home
+          </Text>
         </Link>
         <Link to="/images" onClick={() => handleLinkClick("images")}>
-          <HStack>
-            <Text
+          <Text
               fontWeight="bold"
               fontSize={{ base: "1.5rem", md: "2rem" }}
               fontFamily="Inter, sans-serif"
@@ -106,11 +101,9 @@ const NavBar = () => {
             >
               Images
             </Text>
-          </HStack>
         </Link>
         <Link to="/timetable" onClick={() => handleLinkClick("timetable")}>
-          <HStack>
-            <Text
+          <Text
               fontWeight="bold"
               fontSize={{ base: "1.5rem", md: "2rem" }}
               fontFamily="Inter, sans-serif"
@@ -119,23 +112,20 @@ const NavBar = () => {
             >
               Events
             </Text>
-          </HStack>
         </Link>
         <Link to="/contacts" onClick={() => handleLinkClick("contacts")}>
-          <HStack>
-            <Text
-              fontWeight="bold"
-              fontSize={{ base: "1.5rem", md: "2rem" }}
-              fontFamily="Inter, sans-serif"
-              textDecoration={activeLink === "contacts" ? "underline" : "none"}
-              color="#e8e6e3"
-            >
-              Contacts
-            </Text>
-          </HStack>
+          <Text
+                fontWeight="bold"
+                fontSize={{ base: "1.5rem", md: "2rem" }}
+                fontFamily="Inter, sans-serif"
+                textDecoration={activeLink === "contacts" ? "underline" : "none"}
+                color="#e8e6e3"
+              >
+                Contacts
+              </Text>
         </Link>
 
-        {
+        {/* {
           <a href="/playGo" onClick={() => handleLinkClick("playGo")}>
             <HStack>
               <Text
@@ -149,7 +139,7 @@ const NavBar = () => {
               </Text>
             </HStack>
           </a>
-        }
+        } */}
       </HStack>
       <HStack></HStack>
     </Flex>

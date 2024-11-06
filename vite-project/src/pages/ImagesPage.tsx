@@ -26,7 +26,7 @@ const ImageGallery: React.FC = () => {
       const fileName =
         src.split("/").pop()?.split(".").shift() || `Image ${index + 1}`;
       return {
-        src: src,
+        src: src.replace("../../public", ""),
         caption: fileName,
       };
     }

@@ -20,24 +20,6 @@ const NavBar = () => {
     }
   }, [location.pathname]);
 
-  // useEffect(() => {
-  //   const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
-  //     setUser(currentUser);
-  //   });
-
-  //   return () => unsubscribe();
-  // }, []);
-
-  // const handleLogout = async () => {
-  //   try {
-  //     await signOut(auth);
-  //     setUser(null);
-  //     navigate("login");
-  //   } catch (err: any) {
-  //     console.log("error logging out", err);
-  //   }
-  // };
-
   return (
     <Flex
       as="nav"
@@ -67,7 +49,7 @@ const NavBar = () => {
         width="auto" // Automatically adjust width to maintain aspect ratio
         maxWidth="120px" // Prevents horizontal resizing beyond this width
         objectFit="contain" // Ensures the image fits within the specified height
-        p={1}
+        p={{ base: 1, md: 2 }}
         m={0}
         display={{base: 'none', md: 'block'}}
         position="absolute"

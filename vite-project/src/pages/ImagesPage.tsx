@@ -42,11 +42,11 @@ const ImageGallery: React.FC = () => {
 
   return (
     <Container
-      maxW={{ base: '100vw', lg: '80vw' }}
+      maxW={{ base: "100vw", lg: "80vw" }}
       boxShadow="lg"
       bg="rgba(0,0,0,0.8)"
       textColor="gray.300"
-      padding={{base: 4, lg: 8}}
+      padding={{ base: 4, lg: 8 }}
       paddingTop="3.5rem"
     >
       <Box
@@ -68,7 +68,7 @@ const ImageGallery: React.FC = () => {
             zIndex: 0,
           },
           ".masonry-grid-column > div:hover": {
-            transform: "scale(1.1)", /// scale factor on hover
+            transform: "scale(1.07)", /// scale factor on hover
             zIndex: 1,
           },
           ".caption": {
@@ -104,7 +104,7 @@ const ImageGallery: React.FC = () => {
                 height="auto"
                 borderRadius="md"
               />
-              <Text className="caption">{image.caption}</Text>{" "}
+              {/* <Text className="caption">{image.caption}</Text>{" "} */}
               {/* Caption for image */}
             </Box>
           ))}

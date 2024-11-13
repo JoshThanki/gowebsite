@@ -27,19 +27,16 @@ const NavBar = () => {
       direction="row"
       align="center"
       justifyContent="space-between"
-
-      bg = "rgba(10, 10, 10, .7)"
+      bg="rgba(10, 10, 10, .7)"
       borderBottom={"1px solid rgba(200,200,200,0.5)"}
       style={{
         backdropFilter: "blur(10px)", // Frosted glass effect
         WebkitBackdropFilter: "blur(10px)",
       }}
-
       padding={0}
       width="100vw"
       height="3.5rem"
       zIndex={100}
-      
       fontFamily={"sans-serif"}
     >
       {/* Logo */}
@@ -51,13 +48,12 @@ const NavBar = () => {
         objectFit="contain" // Ensures the image fits within the specified height
         p={{ base: 1, md: 2 }}
         m={0}
-        display={{base: 'none', md: 'block'}}
+        display={{ base: "none", md: "block" }}
         position="absolute"
       />
-  
 
       {/* Links */}
-      <HStack 
+      <HStack
         spacing={{ base: "1rem", md: "2rem" }}
         flexGrow={1} // Allow HStack to take up available space
         justifyContent="center"
@@ -75,36 +71,36 @@ const NavBar = () => {
         </Link>
         <Link to="/images" onClick={() => handleLinkClick("images")}>
           <Text
-              fontWeight="bold"
-              fontSize={{ base: "1.34rem", md: "2rem" }}
-              fontFamily="Inter, sans-serif"
-              textDecoration={activeLink === "images" ? "underline" : "none"}
-              color="#e8e6e3"
-            >
-              Images
-            </Text>
+            fontWeight="bold"
+            fontSize={{ base: "1.34rem", md: "2rem" }}
+            fontFamily="Inter, sans-serif"
+            textDecoration={activeLink === "images" ? "underline" : "none"}
+            color="#e8e6e3"
+          >
+            Images
+          </Text>
         </Link>
         <Link to="/timetable" onClick={() => handleLinkClick("timetable")}>
           <Text
-              fontWeight="bold"
-              fontSize={{ base: "1.34rem", md: "2rem" }}
-              fontFamily="Inter, sans-serif"
-              textDecoration={activeLink === "timetable" ? "underline" : "none"}
-              color="#e8e6e3"
-            >
-              Events
-            </Text>
+            fontWeight="bold"
+            fontSize={{ base: "1.34rem", md: "2rem" }}
+            fontFamily="Inter, sans-serif"
+            textDecoration={activeLink === "timetable" ? "underline" : "none"}
+            color="#e8e6e3"
+          >
+            Events
+          </Text>
         </Link>
         <Link to="/contacts" onClick={() => handleLinkClick("contacts")}>
           <Text
-                fontWeight="bold"
-                fontSize={{ base: "1.34rem", md: "2rem" }}
-                fontFamily="Inter, sans-serif"
-                textDecoration={activeLink === "contacts" ? "underline" : "none"}
-                color="#e8e6e3"
-              >
-                Contacts
-              </Text>
+            fontWeight="bold"
+            fontSize={{ base: "1.34rem", md: "2rem" }}
+            fontFamily="Inter, sans-serif"
+            textDecoration={activeLink === "contacts" ? "underline" : "none"}
+            color="#e8e6e3"
+          >
+            Contacts
+          </Text>
         </Link>
 
         {/* {

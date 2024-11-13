@@ -1,11 +1,11 @@
 import {
-  Container,
-  Heading,
   Box,
   SimpleGrid,
   Text,
   VStack,
 } from "@chakra-ui/react";
+import PageContainer from "../components/PageContainer";
+import HeadingComponent from "../components/HeadingComponent";
 
 const Events = () => {
   // Example data for the events with locations
@@ -47,33 +47,29 @@ const Events = () => {
     },
   ];
 
-  return (
-    <Container
-      maxW={{ base: '100vw', lg: '80vw' }}
-      boxShadow="lg"
-      bg="rgba(0,0,0,0.8)"
-      textColor="gray.300"
-      p={8}
-      paddingTop={"3.5rem"}
-      minHeight={"100vh"}
-    >
-      <Heading
-        as="h1"
-        textAlign="center"
-        mb={6}
-        fontFamily="sans-serif"
-        fontSize={"3rem"}
-        color="#e8e6e3"
-      >
-        Go Society Events
-      </Heading>
+  const currentDate = new Date();
 
-      <SimpleGrid 
-        columns={{ base: 1, sm: 2, md: 2, lg: 3 }} 
-        spacing={4} 
-        w="100%" 
+  const parseDate = (dateString: string): Date => {
+    const [day, month, year] = dateString.split("/").map(Number);
+    return new Date(year, month - 1, day + 1); // Month is 0-indexed in JavaScript Date
+  };
+
+  const upcomingEvents = events.filter((event) => {
+    const eventDate = new Date(parseDate(event.date));
+    console.log(currentDate);
+    console.log(eventDate);
+    return eventDate >= currentDate;
+  });
+
+  return (
+    <PageContainer>
+      <HeadingComponent> Upcoming Events </HeadingComponent>
+      <SimpleGrid
+        columns={{ base: 1, sm: 2, md: 2, lg: 3 }}
+        spacing={4}
+        w="100%"
       >
-        {events.map((event, index) => (
+        {upcomingEvents.map((event, index) => (
           <Box
             key={index}
             p={4}
@@ -99,8 +95,12 @@ const Events = () => {
               <Text fontSize="sm" color="#e8e6e3">
                 {event.date}
               </Text>
-              <Text fontSize="md" color="#e8e6e3">{event.time}</Text>
-              <Text fontSize="md" color="#e8e6e3">{event.event}</Text>
+              <Text fontSize="md" color="#e8e6e3">
+                {event.time}
+              </Text>
+              <Text fontSize="md" color="#e8e6e3">
+                {event.event}
+              </Text>
               <Text fontSize="sm" color="#e8e6e3">
                 Location: {event.location}
               </Text>
@@ -108,7 +108,7 @@ const Events = () => {
           </Box>
         ))}
       </SimpleGrid>
-    </Container>
+    </PageContainer>
   );
 };
 

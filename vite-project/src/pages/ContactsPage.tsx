@@ -4,7 +4,6 @@ import {
   Text,
   Link,
   Heading,
-  Container,
   SimpleGrid,
 } from "@chakra-ui/react";
 import xiheng from "../assets/execPhotos/xiheng.jpg";
@@ -15,6 +14,8 @@ import naman from "../assets/execPhotos/naman.png";
 import jason from "../assets/execPhotos/jason.jpeg";
 import edmund from "../assets/execPhotos/edmund.jpeg";
 import wenzhou from "../assets/execPhotos/wenzhou.jpg";
+import PageContainer from "../components/PageContainer";
+import HeadingComponent from "../components/HeadingComponent";
 
 interface ContactCardProps {
   name: string;
@@ -154,35 +155,18 @@ const ContactsPage: React.FC = () => {
   ];
 
   return (
-    <Container
-      maxWidth={{ base: '100vw', lg: '80vw' }}
-      minHeight="100vh"
-      boxShadow="lg"
-      background="rgba(0,0,0,0.8)"
-      textColor="gray.300"
-      padding={8}
-      paddingTop="3.5rem"
-    >
-      <Heading
-        as="h1"
-        textAlign="center"
-        mb={6}
-        fontFamily="sans-serif"
-        fontSize={"3rem"}
-        color="#e8e6e3"
-      >
-        Contacts
-      </Heading>
+    <PageContainer>
+      <HeadingComponent> Contacts </HeadingComponent>
       <SimpleGrid
-        columns={{ base: 1, sm: 2, md: 2, lg: 3 }} 
-        spacing={4} 
-        w="100%" 
+        columns={{ base: 1, sm: 2, md: 2, lg: 3 }}
+        spacing={4}
+        w="100%"
       >
         {contacts.map((contact, index) => (
           <ContactCard key={index} {...contact} />
         ))}
       </SimpleGrid>
-    </Container>
+    </PageContainer>
   );
 };
 

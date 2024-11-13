@@ -1,12 +1,7 @@
 import React from "react";
-import {
-  Box,
-  Image,
-  useBreakpointValue,
-  Text,
-  Container,
-} from "@chakra-ui/react";
+import { Box, Image, useBreakpointValue } from "@chakra-ui/react";
 import Masonry from "react-masonry-css";
+import PageContainer from "../components/PageContainer";
 
 // Interface for images
 interface ImageData {
@@ -41,14 +36,7 @@ const ImageGallery: React.FC = () => {
   });
 
   return (
-    <Container
-      maxW={{ base: "100vw", lg: "80vw" }}
-      boxShadow="lg"
-      bg="rgba(0,0,0,0.8)"
-      textColor="gray.300"
-      padding={{ base: 4, lg: 8 }}
-      paddingTop="3.5rem"
-    >
+    <PageContainer paddingTop="3.0rem">
       <Box
         marginTop={{ base: 2, lg: 8 }}
         sx={{
@@ -110,7 +98,7 @@ const ImageGallery: React.FC = () => {
           ))}
         </Masonry>
       </Box>
-    </Container>
+    </PageContainer>
   );
 };
 

@@ -1,9 +1,4 @@
-import {
-  Box,
-  SimpleGrid,
-  Text,
-  VStack,
-} from "@chakra-ui/react";
+import { Box, SimpleGrid, Text, VStack } from "@chakra-ui/react";
 import PageContainer from "../components/PageContainer";
 import HeadingComponent from "../components/HeadingComponent";
 
@@ -22,6 +17,13 @@ const Events = () => {
       date: "13/11/2024",
       time: "2:00 PM",
       event: "Club Session",
+      location: "FAB5.04",
+    },
+    {
+      day: "Sunday",
+      date: "17/11/2024",
+      time: "2:00 PM",
+      event: "Training Session",
       location: "FAB5.04",
     },
     {

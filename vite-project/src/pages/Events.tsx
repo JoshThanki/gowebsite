@@ -5,47 +5,148 @@ import HeadingComponent from "../components/HeadingComponent";
 const Events = () => {
   // Example data for the events with locations
   const events = [
+    // Regular Sessions
+    {
+      day: "Wednesday",
+      date: "08/01/2025",
+      time: "14:00 - 16:00",
+      event: "Regular Session",
+      location: "FAB5.03",
+    },
+    {
+      day: "Wednesday",
+      date: "15/01/2025",
+      time: "14:00 - 16:00",
+      event: "Regular Session",
+      location: "FAB5.03",
+    },
+    {
+      day: "Wednesday",
+      date: "22/01/2025",
+      time: "14:00 - 16:00",
+      event: "Regular Session",
+      location: "FAB5.03",
+    },
+    {
+      day: "Wednesday",
+      date: "29/01/2025",
+      time: "14:00 - 16:00",
+      event: "Regular Session",
+      location: "FAB5.03",
+    },
+    {
+      day: "Wednesday",
+      date: "05/02/2025",
+      time: "14:00 - 16:00",
+      event: "Regular Session",
+      location: "FAB5.03",
+    },
+    {
+      day: "Wednesday",
+      date: "12/02/2025",
+      time: "14:00 - 16:00",
+      event: "Regular Session",
+      location: "FAB5.03",
+    },
+    {
+      day: "Wednesday",
+      date: "19/02/2025",
+      time: "14:00 - 16:00",
+      event: "Regular Session",
+      location: "A1.11 (Soc Sci)",
+    },
+    {
+      day: "Wednesday",
+      date: "26/02/2025",
+      time: "14:00 - 16:00",
+      event: "Regular Session",
+      location: "FAB5.03",
+    },
+    {
+      day: "Wednesday",
+      date: "05/03/2025",
+      time: "14:00 - 16:00",
+      event: "Regular Session",
+      location: "FAB5.03",
+    },
+    {
+      day: "Wednesday",
+      date: "12/03/2025",
+      time: "14:00 - 16:00",
+      event: "Regular Session",
+      location: "FAB1.11",
+    },
+
+    // Teaching Sessions
     {
       day: "Sunday",
-      date: "10/11/2024",
-      time: "2:00 PM",
-      event: "Training Session",
-      location: "FAB5.04",
-    },
-    {
-      day: "Wednesday",
-      date: "13/11/2024",
-      time: "2:00 PM",
-      event: "Club Session",
-      location: "FAB5.04",
+      date: "12/01/2025",
+      time: "14:00 - 17:00",
+      event: "Teaching Session",
+      location: "FAB5.03",
     },
     {
       day: "Sunday",
-      date: "17/11/2024",
-      time: "2:00 PM",
-      event: "Training Session",
-      location: "FAB5.04",
+      date: "19/01/2025",
+      time: "14:00 - 17:00",
+      event: "Teaching Session",
+      location: "FAB5.03",
     },
     {
-      day: "Wednesday",
-      date: "20/11/2024",
-      time: "2:00 PM",
-      event: "Club Session",
-      location: "B2.04",
+      day: "Sunday",
+      date: "26/01/2025",
+      time: "14:00 - 17:00",
+      event: "Teaching Session",
+      location: "FAB5.03",
     },
     {
-      day: "Wednesday",
-      date: "27/11/2024",
-      time: "2:00 PM",
-      event: "Club Session",
-      location: "FAB5.04",
+      day: "Sunday",
+      date: "02/02/2025",
+      time: "14:00 - 17:00",
+      event: "Teaching Session",
+      location: "FAB5.03",
     },
     {
-      day: "Wednesday",
-      date: "5/12/2024",
-      time: "2:00 PM",
-      event: "Club Session",
-      location: "FAB5.04",
+      day: "Sunday",
+      date: "09/02/2025",
+      time: "14:00 - 17:00",
+      event: "Teaching Session",
+      location: "FAB5.03",
+    },
+    {
+      day: "Sunday",
+      date: "16/02/2025",
+      time: "14:00 - 17:00",
+      event: "Teaching Session",
+      location: "FAB5.03",
+    },
+    {
+      day: "Sunday",
+      date: "02/03/2025",
+      time: "14:00 - 17:00",
+      event: "Teaching Session",
+      location: "FAB5.03",
+    },
+    {
+      day: "Sunday",
+      date: "09/03/2025",
+      time: "14:00 - 17:00",
+      event: "Teaching Session",
+      location: "FAB5.03",
+    },
+    {
+      day: "Sunday",
+      date: "16/03/2025",
+      time: "14:00 - 17:00",
+      event: "Teaching Session",
+      location: "FAB5.03",
+    },
+    {
+      day: "Saturday",
+      date: "25/01/2025",
+      time: "14:00 - 17:00",
+      event: "Go Tournament",
+      location: "FAB1.11",
     },
   ];
 
@@ -53,16 +154,20 @@ const Events = () => {
 
   const parseDate = (dateString: string): Date => {
     const [day, month, year] = dateString.split("/").map(Number);
-    return new Date(year, month - 1, day + 1); // Month is 0-indexed in JavaScript Date
+    return new Date(year, month - 1, day); // No need to add 1 to the day
   };
 
-  const upcomingEvents = events.filter((event) => {
-    const eventDate = new Date(parseDate(event.date));
-    console.log(currentDate);
-    console.log(eventDate);
-    return eventDate >= currentDate;
-  });
-
+  const upcomingEvents = events
+    .filter((event) => {
+      const eventDate = parseDate(event.date);
+      return eventDate >= currentDate;
+    })
+    .sort((a, b) => {
+      const dateA = parseDate(a.date);
+      const dateB = parseDate(b.date);
+      return dateA.getTime() - dateB.getTime(); // Sort by date in ascending order
+    })
+    .slice(0, 6); // Only show the first 6 upcoming events
   return (
     <PageContainer>
       <HeadingComponent> Upcoming Events </HeadingComponent>
